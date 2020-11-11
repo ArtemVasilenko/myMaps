@@ -1,11 +1,13 @@
 import UIKit
 import GoogleMaps
+import CoreData
 
 let googleApiKey = "AIzaSyDIEISIkb-Q_4s7rw72ttXX93Iv4HPZLFY"
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    static var location = [NSManagedObject]()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		55359EAE255C227B003E3561 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55359EAD255C227B003E3561 /* LocationModel.swift */; };
+		55359EB3255C2706003E3561 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55359EB2255C2706003E3561 /* Strings.swift */; };
+		55359EB6255C2BA3003E3561 /* ColorEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55359EB5255C2BA3003E3561 /* ColorEnum.swift */; };
+		55846524255BE9FA002F894E /* mapsCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 55846522255BE9FA002F894E /* mapsCoreData.xcdatamodeld */; };
 		55D136B72554548000A02A65 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D136B62554548000A02A65 /* AppDelegate.swift */; };
 		55D136B92554548000A02A65 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D136B82554548000A02A65 /* SceneDelegate.swift */; };
 		55D136BB2554548000A02A65 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D136BA2554548000A02A65 /* ViewController.swift */; };
@@ -19,6 +23,10 @@
 /* Begin PBXFileReference section */
 		04CF5C54F4F0A669E5CE31B7 /* libPods-VasyaMaps.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VasyaMaps.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FD03AD6A34CC77E4033AECE /* Pods-VasyaMaps.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VasyaMaps.debug.xcconfig"; path = "Target Support Files/Pods-VasyaMaps/Pods-VasyaMaps.debug.xcconfig"; sourceTree = "<group>"; };
+		55359EAD255C227B003E3561 /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
+		55359EB2255C2706003E3561 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		55359EB5255C2BA3003E3561 /* ColorEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorEnum.swift; sourceTree = "<group>"; };
+		55846523255BE9FA002F894E /* mapsCoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = mapsCoreData.xcdatamodel; sourceTree = "<group>"; };
 		55D136B32554548000A02A65 /* VasyaMaps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VasyaMaps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55D136B62554548000A02A65 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		55D136B82554548000A02A65 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -42,6 +50,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		55846526255BEA0F002F894E /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				55846522255BE9FA002F894E /* mapsCoreData.xcdatamodeld */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		55846527255BEA30002F894E /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				55D136BC2554548000A02A65 /* Main.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
 		55D136AA2554548000A02A65 = {
 			isa = PBXGroup;
 			children = (
@@ -63,13 +87,17 @@
 		55D136B52554548000A02A65 /* VasyaMaps */ = {
 			isa = PBXGroup;
 			children = (
+				55846527255BEA30002F894E /* Storyboard */,
+				55846526255BEA0F002F894E /* CoreData */,
 				55D136B62554548000A02A65 /* AppDelegate.swift */,
 				55D136B82554548000A02A65 /* SceneDelegate.swift */,
 				55D136BA2554548000A02A65 /* ViewController.swift */,
-				55D136BC2554548000A02A65 /* Main.storyboard */,
 				55D136BF2554548500A02A65 /* Assets.xcassets */,
 				55D136C12554548500A02A65 /* LaunchScreen.storyboard */,
 				55D136C42554548500A02A65 /* Info.plist */,
+				55359EAD255C227B003E3561 /* LocationModel.swift */,
+				55359EB2255C2706003E3561 /* Strings.swift */,
+				55359EB5255C2BA3003E3561 /* ColorEnum.swift */,
 			);
 			path = VasyaMaps;
 			sourceTree = "<group>";
@@ -206,7 +234,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				55D136BB2554548000A02A65 /* ViewController.swift in Sources */,
+				55846524255BE9FA002F894E /* mapsCoreData.xcdatamodeld in Sources */,
 				55D136B72554548000A02A65 /* AppDelegate.swift in Sources */,
+				55359EAE255C227B003E3561 /* LocationModel.swift in Sources */,
+				55359EB3255C2706003E3561 /* Strings.swift in Sources */,
+				55359EB6255C2BA3003E3561 /* ColorEnum.swift in Sources */,
 				55D136B92554548000A02A65 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -359,6 +391,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S3J28J4J6D;
 				INFOPLIST_FILE = VasyaMaps/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -381,6 +414,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S3J28J4J6D;
 				INFOPLIST_FILE = VasyaMaps/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -415,6 +449,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		55846522255BE9FA002F894E /* mapsCoreData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				55846523255BE9FA002F894E /* mapsCoreData.xcdatamodel */,
+			);
+			currentVersion = 55846523255BE9FA002F894E /* mapsCoreData.xcdatamodel */;
+			path = mapsCoreData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 55D136AB2554548000A02A65 /* Project object */;
 }
