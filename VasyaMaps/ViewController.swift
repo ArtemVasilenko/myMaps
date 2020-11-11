@@ -63,7 +63,7 @@ extension ViewController: CLLocationManagerDelegate {
 extension ViewController: GMSMapViewDelegate, LocationProtocol {
     
     func mapView(_ mapView: GMSMapView, didLongPressAt coordinate: CLLocationCoordinate2D) {
-        rememberLocation(coordinate, self.pickerView, locations, self.mapView, self)
+        rememberLocation(coordinate, self.pickerView, self.mapView, self)
     }
     
 }

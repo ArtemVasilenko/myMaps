@@ -50,6 +50,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		55359EBF255C2EB4003E3561 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				55359EAD255C227B003E3561 /* LocationModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		55359EC1255C2ECA003E3561 /* Engine */ = {
+			isa = PBXGroup;
+			children = (
+				55359EB2255C2706003E3561 /* Strings.swift */,
+				55359EB5255C2BA3003E3561 /* ColorEnum.swift */,
+			);
+			path = Engine;
+			sourceTree = "<group>";
+		};
 		55846526255BEA0F002F894E /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
@@ -87,6 +104,8 @@
 		55D136B52554548000A02A65 /* VasyaMaps */ = {
 			isa = PBXGroup;
 			children = (
+				55359EC1255C2ECA003E3561 /* Engine */,
+				55359EBF255C2EB4003E3561 /* Model */,
 				55846527255BEA30002F894E /* Storyboard */,
 				55846526255BEA0F002F894E /* CoreData */,
 				55D136B62554548000A02A65 /* AppDelegate.swift */,
@@ -95,9 +114,6 @@
 				55D136BF2554548500A02A65 /* Assets.xcassets */,
 				55D136C12554548500A02A65 /* LaunchScreen.storyboard */,
 				55D136C42554548500A02A65 /* Info.plist */,
-				55359EAD255C227B003E3561 /* LocationModel.swift */,
-				55359EB2255C2706003E3561 /* Strings.swift */,
-				55359EB5255C2BA3003E3561 /* ColorEnum.swift */,
 			);
 			path = VasyaMaps;
 			sourceTree = "<group>";
