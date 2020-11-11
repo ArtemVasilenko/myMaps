@@ -7,4 +7,5 @@ struct SaveLocationAlert {
     let alertMessage = "Choose color of pin: \n\n\n\n\n\n\n"
     let enterName = "Enter name"
     let cancelAction = "Cancel"
+    let okAction = "Ok"
 }
