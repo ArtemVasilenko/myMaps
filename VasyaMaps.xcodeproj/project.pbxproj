@@ -11,6 +11,8 @@
 		55359EB3255C2706003E3561 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55359EB2255C2706003E3561 /* Strings.swift */; };
 		55359EB6255C2BA3003E3561 /* ColorEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55359EB5255C2BA3003E3561 /* ColorEnum.swift */; };
 		55846524255BE9FA002F894E /* mapsCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 55846522255BE9FA002F894E /* mapsCoreData.xcdatamodeld */; };
+		55A4020D255C3E1A00B3A4A4 /* SetMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A4020C255C3E1A00B3A4A4 /* SetMarker.swift */; };
+		55A40218255C457500B3A4A4 /* extensionColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A40217255C457500B3A4A4 /* extensionColor.swift */; };
 		55D136B72554548000A02A65 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D136B62554548000A02A65 /* AppDelegate.swift */; };
 		55D136B92554548000A02A65 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D136B82554548000A02A65 /* SceneDelegate.swift */; };
 		55D136BB2554548000A02A65 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D136BA2554548000A02A65 /* ViewController.swift */; };
@@ -27,6 +29,8 @@
 		55359EB2255C2706003E3561 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		55359EB5255C2BA3003E3561 /* ColorEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorEnum.swift; sourceTree = "<group>"; };
 		55846523255BE9FA002F894E /* mapsCoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = mapsCoreData.xcdatamodel; sourceTree = "<group>"; };
+		55A4020C255C3E1A00B3A4A4 /* SetMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetMarker.swift; sourceTree = "<group>"; };
+		55A40217255C457500B3A4A4 /* extensionColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensionColor.swift; sourceTree = "<group>"; };
 		55D136B32554548000A02A65 /* VasyaMaps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VasyaMaps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55D136B62554548000A02A65 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		55D136B82554548000A02A65 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -54,6 +58,7 @@
 			isa = PBXGroup;
 			children = (
 				55359EAD255C227B003E3561 /* LocationModel.swift */,
+				55A4020C255C3E1A00B3A4A4 /* SetMarker.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -63,6 +68,7 @@
 			children = (
 				55359EB2255C2706003E3561 /* Strings.swift */,
 				55359EB5255C2BA3003E3561 /* ColorEnum.swift */,
+				55A40217255C457500B3A4A4 /* extensionColor.swift */,
 			);
 			path = Engine;
 			sourceTree = "<group>";
@@ -249,7 +255,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55A4020D255C3E1A00B3A4A4 /* SetMarker.swift in Sources */,
 				55D136BB2554548000A02A65 /* ViewController.swift in Sources */,
+				55A40218255C457500B3A4A4 /* extensionColor.swift in Sources */,
 				55846524255BE9FA002F894E /* mapsCoreData.xcdatamodeld in Sources */,
 				55D136B72554548000A02A65 /* AppDelegate.swift in Sources */,
 				55359EAE255C227B003E3561 /* LocationModel.swift in Sources */,

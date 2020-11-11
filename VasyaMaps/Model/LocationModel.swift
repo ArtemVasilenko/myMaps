@@ -3,21 +3,15 @@ import GoogleMaps
 import UIKit
 import CoreData
 
-protocol LocationProtocol: UIPickerViewDelegate, UIPickerViewDataSource {
+protocol LocationProtocol: UIPickerViewDelegate, UIPickerViewDataSource, SetMarkerProtocol {
     func rememberLocation(_ coordinate: CLLocationCoordinate2D, _ colorPickerView: UIPickerView, _ mapView: GMSMapView, _ vc: UIViewController)
 }
 
 extension LocationProtocol {
     func rememberLocation(_ coordinate: CLLocationCoordinate2D, _ colorPickerView: UIPickerView, _ mapView: GMSMapView, _ vc: UIViewController) {
-                
-//        let blurEffect = UIBlurEffect(style: .dark)
-//        let blurVisualEffectView = UIVisualEffectView(effect: blurEffect)
-//        blurVisualEffectView.frame = vc.view.bounds
         
         let alert = UIAlertController(title: SaveLocationAlert.shared.title, message: SaveLocationAlert.shared.alertMessage, preferredStyle: .alert)
             
-        
-        
         alert.addTextField { (textField) in
             textField.placeholder = SaveLocationAlert.shared.enterName
         }
@@ -43,9 +37,9 @@ extension LocationProtocol {
             let location = NSManagedObject(entity: entity, insertInto: managedContext)
             
             location.setValue(alert.textFields![0].text, forKey: "name")
-            location.setValue(Float(coordinate.longitude), forKey: "longtide")
+            location.setValue(Float(coordinate.longitude), forKey: "longtitude")
             location.setValue(Float(coordinate.latitude), forKey: "latitude")
-            location.setValue(Color.shared.color?.descriptionImage, forKey: "color")
+            location.setValue(Color.shared.color?.descriptionImage, forKey: "colorItem")
             
             
             do {
@@ -55,19 +49,20 @@ extension LocationProtocol {
                 print("Could not save. \(error), \(error.userInfo)")
               }
             
-                
+            self.createAndSetMarker(entity: location, mapView: mapView)
+            
 //                locations.append(newLocation)
 //                self.insertLocation(newLocation)
 //                self.createAndSetMarker(newLocation, mapView)
             
+            print(AppDelegate.location)
         }
         
         let cancelAction = UIAlertAction(title: SaveLocationAlert.shared.cancelAction, style: .cancel, handler: nil)
 
         alert.addAction(cancelAction)
+        alert.addAction(okAction)
         vc.present(alert, animated: true, completion: nil)
-//        blurVisualEffectView.removeFromSuperview()
+        
         }
-    
-    
 }
