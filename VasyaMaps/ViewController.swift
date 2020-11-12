@@ -74,6 +74,8 @@ extension ViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print(error)
     }
+    
+    
 }
 
 extension ViewController: GMSMapViewDelegate, LocationProtocol {
@@ -82,8 +84,31 @@ extension ViewController: GMSMapViewDelegate, LocationProtocol {
         rememberLocation(coordinate, self.pickerView, self.mapView, self)
     }
     
+    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+        print(marker.icon = UIImage(named: "CameraIcon"))
+        
+    
+        let location = CLLocation(latitude: marker.position.latitude, longitude: marker.position.longitude)
+        
+        let geoCoder = CLGeocoder()
+        
+        geoCoder.reverseGeocodeLocation(location) { (placemarks, error) in
+            
+            if let placemarksy = placemarks, let placemark = placemarksy.first {
+                DispatchQueue.main.async {
+                            //  update UI here
+                            print("name:", placemark.name ?? "unknown")
+                            print("city:", placemark.locality ?? "unknown")
+                            print("country:", placemark.country ?? "unknown", terminator: "\n\n")
+                        }
+            }
+            
+        }
+        
+        return true
+    }
+    
 }
-
 extension ViewController {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         1
