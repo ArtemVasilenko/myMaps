@@ -3,7 +3,8 @@ import GoogleMaps
 import GooglePlaces
 import CoreData
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, PlacementOnLocation {
+    
     
     @IBOutlet weak var mapView: GMSMapView!
     var pickerView = UIPickerView()
@@ -26,8 +27,23 @@ class ViewController: UIViewController {
         self.mapView.isMyLocationEnabled = true
         self.mapView.settings.myLocationButton = true
         self.mapView.settings.compassButton = true
-        
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: CoreDataValues.shared.entityLocation)
+        
+        do {
+            AppDelegate.location = try managedContext.fetch(fetchRequest)
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+          }
+        
+        placementOnLocation(entity: AppDelegate.location, mapView: self.mapView)
+    }
+    
 }
 
 extension ViewController: CLLocationManagerDelegate {

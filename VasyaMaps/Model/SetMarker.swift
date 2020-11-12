@@ -3,9 +3,7 @@ import GoogleMaps
 import CoreData
 
 protocol SetMarkerProtocol {
-    
     func createAndSetMarker(entity: NSManagedObject, mapView: GMSMapView)
-    func createAndSetMarker(_ coordinate: CLLocationCoordinate2D, _ title: String, _ mapView: GMSMapView, _ colorOfMarker: UIColor?)
 }
 
 extension SetMarkerProtocol {
@@ -25,13 +23,4 @@ extension SetMarkerProtocol {
         marker.map = mapView
     }
     
-    func createAndSetMarker(_ coordinate: CLLocationCoordinate2D, _ title: String, _ mapView: GMSMapView, _ colorOfMarker: UIColor?){
-        
-        let marker = GMSMarker()
-        marker.position = coordinate
-        marker.title = title
-        marker.map = mapView
-        marker.icon = GMSMarker.markerImage(with: colorOfMarker ?? .systemGray)
-        
-    }
 }
