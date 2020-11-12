@@ -21,26 +21,21 @@ extension LocationProtocol {
         colorPickerView.frame = CGRect(x: 30, y: 70, width: alert.view.frame.width / 2, height: 140)
         alert.view.addSubview(colorPickerView)
         
-        
-        
         let okAction = UIAlertAction(title: SaveLocationAlert.shared.okAction, style: .default) { (action) in
             
             guard alert.textFields![0].text != "" else { return }
             
-            
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let managedContext = appDelegate.persistentContainer.viewContext
             
-            
-            let entity = NSEntityDescription.entity(forEntityName: "Location", in: managedContext) ?? NSEntityDescription()
+            let entity = NSEntityDescription.entity(forEntityName: CoreDataValues.shared.entityLocation, in: managedContext) ?? NSEntityDescription()
             
             let location = NSManagedObject(entity: entity, insertInto: managedContext)
             
-            location.setValue(alert.textFields![0].text, forKey: "name")
-            location.setValue(Float(coordinate.longitude), forKey: "longtitude")
-            location.setValue(Float(coordinate.latitude), forKey: "latitude")
-            location.setValue(Color.shared.color?.descriptionImage, forKey: "colorItem")
-            
+            location.setValue(alert.textFields![0].text, forKey: CoreDataValues.shared.attributeName)
+            location.setValue(Float(coordinate.longitude), forKey: CoreDataValues.shared.attributeLongtitude)
+            location.setValue(Float(coordinate.latitude), forKey: CoreDataValues.shared.attributeLatitude)
+            location.setValue(Color.shared.color?.descriptionImage, forKey: CoreDataValues.shared.attributeColor)
             
             do {
                 try managedContext.save()
@@ -50,10 +45,6 @@ extension LocationProtocol {
               }
             
             self.createAndSetMarker(entity: location, mapView: mapView)
-            
-//                locations.append(newLocation)
-//                self.insertLocation(newLocation)
-//                self.createAndSetMarker(newLocation, mapView)
             
             print(AppDelegate.location)
         }

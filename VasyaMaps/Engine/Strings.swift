@@ -9,3 +9,14 @@ struct SaveLocationAlert {
     let cancelAction = "Cancel"
     let okAction = "Ok"
 }
+
+struct CoreDataValues {
+    
+    static var shared: CoreDataValues = CoreDataValues()
+    let entityLocation = "Location"
+    let attributeName = "name"
+    let attributeLongtitude = "longtitude"
+    let attributeLatitude = "latitude"
+    let attributeColor = "colorItem"
+    
+}
