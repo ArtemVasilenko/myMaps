@@ -9,12 +9,8 @@ protocol PlacementOnLocation: SetMarkerProtocol {
 extension PlacementOnLocation {
 
     func placementOnLocation (entity: [NSManagedObject], mapView: GMSMapView) {
-        
         for value in entity {
             createAndSetMarker(entity: value, mapView: mapView)
         }
-        
     }
-
-
 }
