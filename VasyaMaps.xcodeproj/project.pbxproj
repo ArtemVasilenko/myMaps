@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		5519D5ED255D2EDA00D6B5C6 /* SetLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5519D5EC255D2EDA00D6B5C6 /* SetLocation.swift */; };
+		5519D608255D7B2600D6B5C6 /* CastomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5519D607255D7B2600D6B5C6 /* CastomAlert.swift */; };
+		5519D60B255D7CD700D6B5C6 /* AlertPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5519D60A255D7CD700D6B5C6 /* AlertPopUpView.swift */; };
+		5519D618255D933F00D6B5C6 /* UIView+Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5519D617255D933F00D6B5C6 /* UIView+Message.swift */; };
 		55359EAE255C227B003E3561 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55359EAD255C227B003E3561 /* LocationModel.swift */; };
 		55359EB3255C2706003E3561 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55359EB2255C2706003E3561 /* Strings.swift */; };
 		55359EB6255C2BA3003E3561 /* ColorEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55359EB5255C2BA3003E3561 /* ColorEnum.swift */; };
@@ -27,6 +30,9 @@
 		04CF5C54F4F0A669E5CE31B7 /* libPods-VasyaMaps.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VasyaMaps.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FD03AD6A34CC77E4033AECE /* Pods-VasyaMaps.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VasyaMaps.debug.xcconfig"; path = "Target Support Files/Pods-VasyaMaps/Pods-VasyaMaps.debug.xcconfig"; sourceTree = "<group>"; };
 		5519D5EC255D2EDA00D6B5C6 /* SetLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetLocation.swift; sourceTree = "<group>"; };
+		5519D607255D7B2600D6B5C6 /* CastomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastomAlert.swift; sourceTree = "<group>"; };
+		5519D60A255D7CD700D6B5C6 /* AlertPopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPopUpView.swift; sourceTree = "<group>"; };
+		5519D617255D933F00D6B5C6 /* UIView+Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Message.swift"; sourceTree = "<group>"; };
 		55359EAD255C227B003E3561 /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
 		55359EB2255C2706003E3561 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		55359EB5255C2BA3003E3561 /* ColorEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorEnum.swift; sourceTree = "<group>"; };
@@ -59,9 +65,12 @@
 		55359EBF255C2EB4003E3561 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				5519D617255D933F00D6B5C6 /* UIView+Message.swift */,
 				55359EAD255C227B003E3561 /* LocationModel.swift */,
 				55A4020C255C3E1A00B3A4A4 /* SetMarker.swift */,
 				5519D5EC255D2EDA00D6B5C6 /* SetLocation.swift */,
+				5519D607255D7B2600D6B5C6 /* CastomAlert.swift */,
+				5519D60A255D7CD700D6B5C6 /* AlertPopUpView.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -260,11 +269,14 @@
 			files = (
 				55A4020D255C3E1A00B3A4A4 /* SetMarker.swift in Sources */,
 				55D136BB2554548000A02A65 /* ViewController.swift in Sources */,
+				5519D60B255D7CD700D6B5C6 /* AlertPopUpView.swift in Sources */,
+				5519D618255D933F00D6B5C6 /* UIView+Message.swift in Sources */,
 				55A40218255C457500B3A4A4 /* extensionColor.swift in Sources */,
 				55846524255BE9FA002F894E /* mapsCoreData.xcdatamodeld in Sources */,
 				55D136B72554548000A02A65 /* AppDelegate.swift in Sources */,
 				55359EAE255C227B003E3561 /* LocationModel.swift in Sources */,
 				55359EB3255C2706003E3561 /* Strings.swift in Sources */,
+				5519D608255D7B2600D6B5C6 /* CastomAlert.swift in Sources */,
 				5519D5ED255D2EDA00D6B5C6 /* SetLocation.swift in Sources */,
 				55359EB6255C2BA3003E3561 /* ColorEnum.swift in Sources */,
 				55D136B92554548000A02A65 /* SceneDelegate.swift in Sources */,
