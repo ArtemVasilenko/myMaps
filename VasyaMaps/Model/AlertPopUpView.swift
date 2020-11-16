@@ -54,7 +54,7 @@ extension AlertPopUpView {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         addSubview(titleLabel)
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 20),
+            titleLabel.topAnchor.constraint(equalTo: self.bottomAnchor, constant: 20),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 30),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -30)
         ])
@@ -64,17 +64,17 @@ extension AlertPopUpView {
         descriptionLabel.layout(.top, to: .bottom, of: titleLabel, offset: 16)
         descriptionLabel.forceContentWrap(.vertically)
         
-        addSubview(buttonAction)
+        addSubview(button)
         let height: CGFloat = 45
-        buttonAction.set(.height, of: height)
-        buttonAction.layout(.top, to: .bottom, of: descriptionLabel, offset: 30)
-        buttonAction.layoutToSuperview(.bottom, offset: -30)
-        buttonAction.layoutToSuperview(.centerX)
+        button.set(.height, of: height)
+        button.layout(.top, to: .bottom, of: descriptionLabel, offset: 30)
+        button.layoutToSuperview(.bottom, offset: -30)
+        button.layoutToSuperview(.centerX)
         
         let buttonAttributes = message.button
-        buttonAction.buttonContent = buttonAttributes
-        buttonAction.contentEdgeInsets = UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 30)
-        buttonAction.layer.cornerRadius = height * 0.5
+        button.buttonContent = buttonAttributes
+        button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 30)
+        button.layer.cornerRadius = height * 0.5
         
     }
     

@@ -13,7 +13,7 @@ extension LocationProtocol {
         let alert = UIAlertController(title: SaveLocationAlert.shared.title, message: SaveLocationAlert.shared.alertMessage, preferredStyle: .alert)
             
         alert.addTextField { (textField) in
-            textField.placeholder = SaveLocationAlert.shared.enterName
+//            textField.placeholder = SaveLocationAlert.shared.enterName
         }
         
         colorPickerView.delegate = self
