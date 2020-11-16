@@ -87,8 +87,6 @@ extension ViewController: GMSMapViewDelegate, LocationProtocol {
     
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
 //        print(marker.icon = UIImage(named: "CameraIcon"))
-        
-        SwiftEntryKit.display(entry: AlertPopUpView(with: CustomAlert.shared.setupMessage(title: "Test", description: "TestTest")), using: CustomAlert.shared.setupAttributes())
     
         let location = CLLocation(latitude: marker.position.latitude, longitude: marker.position.longitude)
         
@@ -98,10 +96,14 @@ extension ViewController: GMSMapViewDelegate, LocationProtocol {
             
             if let placemarksy = placemarks, let placemark = placemarksy.first {
                 DispatchQueue.main.async {
-                            //  update UI here
-                            print("name:", placemark.name ?? "unknown")
-                            print("city:", placemark.locality ?? "unknown")
-                            print("country:", placemark.country ?? "unknown", terminator: "\n\n")
+                    
+                    let city = placemark.name ?? "unknown"
+                    let address = placemark.locality ?? "unknown"
+                    let country = placemark.country ?? "unknown"
+                    
+                    SwiftEntryKit.display(entry:
+                                            AlertPopUpView(with: CustomAlert.shared.setupMessage(title: country, description: ("\(address), \(city)"))),
+                                          using: CustomAlert.shared.setupAttributes())
                         }
             }
             

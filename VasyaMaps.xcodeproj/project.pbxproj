@@ -65,7 +65,6 @@
 		55359EBF255C2EB4003E3561 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				5519D617255D933F00D6B5C6 /* UIView+Message.swift */,
 				55359EAD255C227B003E3561 /* LocationModel.swift */,
 				55A4020C255C3E1A00B3A4A4 /* SetMarker.swift */,
 				5519D5EC255D2EDA00D6B5C6 /* SetLocation.swift */,
@@ -78,6 +77,7 @@
 		55359EC1255C2ECA003E3561 /* Engine */ = {
 			isa = PBXGroup;
 			children = (
+				5519D617255D933F00D6B5C6 /* UIView+Message.swift */,
 				55359EB2255C2706003E3561 /* Strings.swift */,
 				55359EB5255C2BA3003E3561 /* ColorEnum.swift */,
 				55A40217255C457500B3A4A4 /* extensionColor.swift */,

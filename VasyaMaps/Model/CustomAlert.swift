@@ -5,7 +5,7 @@ struct CustomAlert {
     static var shared: CustomAlert = CustomAlert()
     
     func setupAttributes() -> EKAttributes {
-        var attributes = EKAttributes.centerFloat
+        var attributes = EKAttributes.bottomToast
         attributes.displayDuration = .infinity
         attributes.screenBackground = .color(color: .init(light: UIColor(white: 100.0/250.0, alpha: 0.3), dark: UIColor(white: 50.0/255.0, alpha: 0.3)))
         attributes.shadow = .active(with: .init(color: .black, opacity: 0.3, radius: 8))
@@ -19,7 +19,7 @@ struct CustomAlert {
         attributes.entryBackground = .color(color: .standardBackground)
         attributes.roundCorners = .all(radius: 25)
         
-        attributes.positionConstraints.size = .init(width: .offset(value: 160), height: .intrinsic)
+        attributes.positionConstraints.size = .init(width: .offset(value: 0), height: .intrinsic)
         
         return attributes
     }
@@ -27,16 +27,15 @@ struct CustomAlert {
     func setupMessage(title: String, description: String) -> EKPopUpMessage {
         let image = UIImage(named: "CameraIcon")!
 
-        
         let themeImage = EKPopUpMessage.ThemeImage(image: EKProperty.ImageContent(image: image, size: CGSize(width: 50, height: 50), tint: .black, contentMode: .scaleAspectFill))
         
         let titleLabel = EKProperty.LabelContent(text: title, style: .init(font:            UIFont.systemFont(ofSize: 24.0),
             color: .black,
-            alignment: .center))
+            alignment: .left))
         
         let descriptionLabel = EKProperty.LabelContent(text: description, style: .init(font: UIFont.systemFont(ofSize: 18.0),
             color: .black,
-            alignment: .center))
+            alignment: .left))
         
         let button = EKProperty.ButtonContent(label: .init(text: "Ok", style: .init(font: UIFont.systemFont(ofSize: 18.0), color: .black)), backgroundColor: .init(.orange), highlightedBackgroundColor: .clear)
         
