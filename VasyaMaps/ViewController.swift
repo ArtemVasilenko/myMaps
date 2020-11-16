@@ -2,6 +2,7 @@ import UIKit
 import GoogleMaps
 import GooglePlaces
 import CoreData
+import SwiftEntryKit
 
 class ViewController: UIViewController, PlacementOnLocation {
     
@@ -87,6 +88,7 @@ extension ViewController: GMSMapViewDelegate, LocationProtocol {
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
         print(marker.icon = UIImage(named: "CameraIcon"))
         
+        SwiftEntryKit.display(entry: AlertPopUpView(), using: CustomAlert.shared.setupAttributes())
     
         let location = CLLocation(latitude: marker.position.latitude, longitude: marker.position.longitude)
         
