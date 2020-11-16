@@ -86,9 +86,9 @@ extension ViewController: GMSMapViewDelegate, LocationProtocol {
     }
     
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
-        print(marker.icon = UIImage(named: "CameraIcon"))
+//        print(marker.icon = UIImage(named: "CameraIcon"))
         
-//        SwiftEntryKit.display(entry: AlertPopUpView(), using: CustomAlert.shared.setupAttributes())
+        SwiftEntryKit.display(entry: AlertPopUpView(with: CustomAlert.shared.setupMessage(title: "Test", description: "TestTest")), using: CustomAlert.shared.setupAttributes())
     
         let location = CLLocation(latitude: marker.position.latitude, longitude: marker.position.longitude)
         

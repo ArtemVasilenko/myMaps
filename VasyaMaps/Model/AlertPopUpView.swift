@@ -14,6 +14,7 @@ class AlertPopUpView: UIView {
     private let titleLabel = UILabel()
     private let descriptionLabel = UILabel()
     private let button = UIButton()
+    private let imageView = UIImageView()
      
     init(with message: EKPopUpMessage) {
         self.message = message
@@ -49,12 +50,14 @@ extension AlertPopUpView {
 extension AlertPopUpView {
     
     func setupConstraints() {
-        
+        addSubview(imageView)
+        imageView.layoutToSuperview(.centerX)
+        imageView.layoutToSuperview(.top, offset: 40)
         
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         addSubview(titleLabel)
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: self.bottomAnchor, constant: 20),
+            titleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 20),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 30),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -30)
         ])
