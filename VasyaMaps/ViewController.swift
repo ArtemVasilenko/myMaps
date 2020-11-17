@@ -34,7 +34,7 @@ class ViewController: UIViewController, PlacementOnLocation {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let managedContext = appDelegate.persistentContainer.viewContext
         
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: CoreDataValues.shared.entityLocation)
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: CoreDataValues.entityLocation.rawValue)
         
         do {
             AppDelegate.location = try managedContext.fetch(fetchRequest)

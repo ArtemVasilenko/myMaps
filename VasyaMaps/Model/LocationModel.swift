@@ -28,14 +28,15 @@ extension LocationProtocol {
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let managedContext = appDelegate.persistentContainer.viewContext
             
-            let entity = NSEntityDescription.entity(forEntityName: CoreDataValues.shared.entityLocation, in: managedContext) ?? NSEntityDescription()
+            
+            let entity = NSEntityDescription.entity(forEntityName: CoreDataValues.entityLocation.rawValue, in: managedContext) ?? NSEntityDescription()
             
             let location = NSManagedObject(entity: entity, insertInto: managedContext)
             
-            location.setValue(alert.textFields![0].text, forKey: CoreDataValues.shared.attributeName)
-            location.setValue(Float(coordinate.longitude), forKey: CoreDataValues.shared.attributeLongtitude)
-            location.setValue(Float(coordinate.latitude), forKey: CoreDataValues.shared.attributeLatitude)
-            location.setValue(Color.shared.color?.descriptionImage, forKey: CoreDataValues.shared.attributeColor)
+            location.setValue(alert.textFields![0].text, forKey: CoreDataValues.attributeName.rawValue)
+            location.setValue(Float(coordinate.longitude), forKey: CoreDataValues.attributeLongtitude.rawValue)
+            location.setValue(Float(coordinate.latitude), forKey: CoreDataValues.attributeLatitude.rawValue)
+            location.setValue(Color.shared.color?.descriptionImage, forKey: CoreDataValues.attributeColor.rawValue)
             
             do {
                 try managedContext.save()

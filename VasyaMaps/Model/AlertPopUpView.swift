@@ -15,6 +15,7 @@ class AlertPopUpView: UIView {
     private let descriptionLabel = UILabel()
     private let button = UIButton()
     private let imageView = UIImageView()
+    private let buttonDelete = UIButton()
      
     init(with message: EKPopUpMessage) {
         self.message = message
@@ -36,6 +37,7 @@ extension AlertPopUpView {
         titleLabel.content = message.title
         descriptionLabel.content = message.description
         button.buttonContent = message.button
+        buttonDelete.buttonContent = message.
         
         button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
     }
@@ -72,12 +74,23 @@ extension AlertPopUpView {
         button.set(.height, of: height)
         button.layout(.top, to: .bottom, of: descriptionLabel, offset: 30)
         button.layoutToSuperview(.bottom, offset: -30)
-        button.layoutToSuperview(.centerX)
+        button.layoutToSuperview(.left, offset: 20)
         
         let buttonAttributes = message.button
         button.buttonContent = buttonAttributes
         button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 30)
         button.layer.cornerRadius = height * 0.5
+        
+        addSubview(buttonDelete)
+        buttonDelete.set(.height, of: height)
+        buttonDelete.layout(.top, to: .bottom, of: descriptionLabel, offset: 30)
+        buttonDelete.layoutToSuperview(.bottom, offset: -30)
+        buttonDelete.layoutToSuperview(.centerX)
+        
+        let buttonDeleteAttributes = message.button
+        buttonDelete.buttonContent = buttonDeleteAttributes
+        buttonDelete.contentEdgeInsets = UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 30)
+        buttonDelete.layer.cornerRadius = height * 0.5
         
     }
     

@@ -10,13 +10,10 @@ struct SaveLocationAlert {
     let okAction = "Ok"
 }
 
-struct CoreDataValues {
-    
-    static var shared: CoreDataValues = CoreDataValues()
-    let entityLocation = "Location"
-    let attributeName = "name"
-    let attributeLongtitude = "longtitude"
-    let attributeLatitude = "latitude"
-    let attributeColor = "colorItem"
-    
+enum CoreDataValues: String {
+    case entityLocation = "Location"
+    case attributeName = "name"
+    case attributeLongtitude = "longtitude"
+    case attributeLatitude = "latitude"
+    case attributeColor = "colorItem"
 }

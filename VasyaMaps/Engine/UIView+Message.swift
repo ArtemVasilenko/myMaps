@@ -1,11 +1,3 @@
-//
-//  UIView+Message.swift
-//  PopUpWindows
-//
-//  Created by Алексей Пархоменко on 14.05.2020.
-//  Copyright © 2020 Алексей Пархоменко. All rights reserved.
-//
-
 import UIKit
 import SwiftEntryKit
 
