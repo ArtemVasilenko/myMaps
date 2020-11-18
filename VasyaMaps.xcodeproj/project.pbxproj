@@ -17,6 +17,7 @@
 		55846524255BE9FA002F894E /* mapsCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 55846522255BE9FA002F894E /* mapsCoreData.xcdatamodeld */; };
 		55A4020D255C3E1A00B3A4A4 /* SetMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A4020C255C3E1A00B3A4A4 /* SetMarker.swift */; };
 		55A40218255C457500B3A4A4 /* extensionColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A40217255C457500B3A4A4 /* extensionColor.swift */; };
+		55BCD5A225653FEE007920CF /* CustomAlertProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BCD5A125653FEE007920CF /* CustomAlertProtocol.swift */; };
 		55D136B72554548000A02A65 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D136B62554548000A02A65 /* AppDelegate.swift */; };
 		55D136B92554548000A02A65 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D136B82554548000A02A65 /* SceneDelegate.swift */; };
 		55D136BB2554548000A02A65 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D136BA2554548000A02A65 /* ViewController.swift */; };
@@ -39,6 +40,7 @@
 		55846523255BE9FA002F894E /* mapsCoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = mapsCoreData.xcdatamodel; sourceTree = "<group>"; };
 		55A4020C255C3E1A00B3A4A4 /* SetMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetMarker.swift; sourceTree = "<group>"; };
 		55A40217255C457500B3A4A4 /* extensionColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensionColor.swift; sourceTree = "<group>"; };
+		55BCD5A125653FEE007920CF /* CustomAlertProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertProtocol.swift; sourceTree = "<group>"; };
 		55D136B32554548000A02A65 /* VasyaMaps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VasyaMaps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55D136B62554548000A02A65 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		55D136B82554548000A02A65 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -68,8 +70,6 @@
 				55359EAD255C227B003E3561 /* LocationModel.swift */,
 				55A4020C255C3E1A00B3A4A4 /* SetMarker.swift */,
 				5519D5EC255D2EDA00D6B5C6 /* SetLocation.swift */,
-				5519D607255D7B2600D6B5C6 /* CustomAlert.swift */,
-				5519D60A255D7CD700D6B5C6 /* AlertPopUpView.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -101,6 +101,24 @@
 			path = Storyboard;
 			sourceTree = "<group>";
 		};
+		55BCD59825653B2C007920CF /* CustomAlert */ = {
+			isa = PBXGroup;
+			children = (
+				55BCD5A025653EE1007920CF /* Model */,
+				5519D607255D7B2600D6B5C6 /* CustomAlert.swift */,
+				5519D60A255D7CD700D6B5C6 /* AlertPopUpView.swift */,
+			);
+			path = CustomAlert;
+			sourceTree = "<group>";
+		};
+		55BCD5A025653EE1007920CF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				55BCD5A125653FEE007920CF /* CustomAlertProtocol.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		55D136AA2554548000A02A65 = {
 			isa = PBXGroup;
 			children = (
@@ -122,6 +140,7 @@
 		55D136B52554548000A02A65 /* VasyaMaps */ = {
 			isa = PBXGroup;
 			children = (
+				55BCD59825653B2C007920CF /* CustomAlert */,
 				55359EC1255C2ECA003E3561 /* Engine */,
 				55359EBF255C2EB4003E3561 /* Model */,
 				55846527255BEA30002F894E /* Storyboard */,
@@ -270,6 +289,7 @@
 				55A4020D255C3E1A00B3A4A4 /* SetMarker.swift in Sources */,
 				55D136BB2554548000A02A65 /* ViewController.swift in Sources */,
 				5519D60B255D7CD700D6B5C6 /* AlertPopUpView.swift in Sources */,
+				55BCD5A225653FEE007920CF /* CustomAlertProtocol.swift in Sources */,
 				5519D618255D933F00D6B5C6 /* UIView+Message.swift in Sources */,
 				55A40218255C457500B3A4A4 /* extensionColor.swift in Sources */,
 				55846524255BE9FA002F894E /* mapsCoreData.xcdatamodeld in Sources */,

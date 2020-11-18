@@ -37,7 +37,7 @@ struct CustomAlert {
             color: .black,
             alignment: .left))
         
-        let button = EKProperty.ButtonContent(label: .init(text: "Ok", style: .init(font: UIFont.systemFont(ofSize: 18.0), color: .black)), backgroundColor: .init(.blue), highlightedBackgroundColor: .clear)
+        let button = EKProperty.ButtonContent(label: .init(text: "Marker settings", style: .init(font: UIFont.systemFont(ofSize: 18.0), color: .black)), backgroundColor: .init(.blue), highlightedBackgroundColor: .clear)
         
         let message = EKPopUpMessage(themeImage: themeImage, title: titleLabel, description: descriptionLabel, button: button) {
             SwiftEntryKit.dismiss()

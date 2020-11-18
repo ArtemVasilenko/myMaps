@@ -43,6 +43,8 @@ extension AlertPopUpView {
     
     @objc func buttonPressed() {
         message.action()
+        
+    
     }
     
 }

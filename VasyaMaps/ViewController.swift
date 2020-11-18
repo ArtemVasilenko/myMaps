@@ -10,7 +10,7 @@ class ViewController: UIViewController, PlacementOnLocation {
     @IBOutlet weak var mapView: GMSMapView!
     var pickerView = UIPickerView()
     var locations = [NSManagedObject]()
-
+    
     var locationMager: CLLocationManager?
     
     override func viewDidLoad() {
@@ -40,7 +40,7 @@ class ViewController: UIViewController, PlacementOnLocation {
             AppDelegate.location = try managedContext.fetch(fetchRequest)
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
-          }
+        }
         
         placementOnLocation(entity: AppDelegate.location, mapView: self.mapView)
     }
@@ -79,32 +79,31 @@ extension ViewController: CLLocationManagerDelegate {
     
 }
 
-extension ViewController: GMSMapViewDelegate, LocationProtocol {
+extension ViewController: GMSMapViewDelegate, LocationProtocol, CustomALertProtocol {
     
     func mapView(_ mapView: GMSMapView, didLongPressAt coordinate: CLLocationCoordinate2D) {
         rememberLocation(coordinate, self.pickerView, self.mapView, self)
     }
     
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
-//        print(marker.icon = UIImage(named: "CameraIcon"))
-    
+        //        print(marker.icon = UIImage(named: "CameraIcon"))
+        
         let location = CLLocation(latitude: marker.position.latitude, longitude: marker.position.longitude)
         
         let geoCoder = CLGeocoder()
         
         geoCoder.reverseGeocodeLocation(location) { (placemarks, error) in
             
-            if let placemarksy = placemarks, let placemark = placemarksy.first {
+            if let placemarks = placemarks, let placemark = placemarks.first {
                 DispatchQueue.main.async {
                     
                     let city = placemark.name ?? "unknown"
                     let address = placemark.locality ?? "unknown"
                     let country = placemark.country ?? "unknown"
                     
-                    SwiftEntryKit.display(entry:
-                                            AlertPopUpView(with: CustomAlert.shared.setupMessage(title: country, description: ("\(address), \(city)"))),
-                                          using: CustomAlert.shared.setupAttributes())
-                        }
+                    self.showCustomAlert(markerTitle: city, country: country, city: city, address: address)
+                    
+                }
             }
             
         }
