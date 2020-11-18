@@ -5,7 +5,7 @@ import CoreData
 import SwiftEntryKit
 
 class ViewController: UIViewController, PlacementOnLocation {
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    private let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     
     @IBOutlet weak var mapView: GMSMapView!

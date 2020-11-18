@@ -1,10 +1,3 @@
-//
-//  AlertPopUpView.swift
-//  VasyaMaps
-//
-//  Created by Артем Василенко on 12.11.2020.
-//
-
 import UIKit
 import SwiftEntryKit
 
@@ -23,7 +16,6 @@ class AlertPopUpView: UIView {
         
         setupElements()
         setupConstraints()
-        
         
     }
     
@@ -44,12 +36,8 @@ extension AlertPopUpView {
     }
     
     @objc func buttonPressed() {
-//        message.action()
         
-        let testView = UIView(frame: CGRect(x: 50, y: 50, width: 200, height: 200))
-        testView.backgroundColor = .red
-        
-        self.addSubview(testView)
+        self.addSubview(SettingsView(frame: self.frame, color: .clear, tableView: TableViewSettings()))
         
     }
     

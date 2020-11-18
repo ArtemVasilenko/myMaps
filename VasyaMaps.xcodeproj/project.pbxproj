@@ -17,6 +17,8 @@
 		55846524255BE9FA002F894E /* mapsCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 55846522255BE9FA002F894E /* mapsCoreData.xcdatamodeld */; };
 		55A4020D255C3E1A00B3A4A4 /* SetMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A4020C255C3E1A00B3A4A4 /* SetMarker.swift */; };
 		55A40218255C457500B3A4A4 /* extensionColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A40217255C457500B3A4A4 /* extensionColor.swift */; };
+		55B84F1825655959001D4DA1 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B84F1725655959001D4DA1 /* SettingView.swift */; };
+		55B84F2325656380001D4DA1 /* TabbleViewSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B84F2225656380001D4DA1 /* TabbleViewSettings.swift */; };
 		55BCD5A225653FEE007920CF /* CustomAlertProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BCD5A125653FEE007920CF /* CustomAlertProtocol.swift */; };
 		55D136B72554548000A02A65 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D136B62554548000A02A65 /* AppDelegate.swift */; };
 		55D136B92554548000A02A65 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D136B82554548000A02A65 /* SceneDelegate.swift */; };
@@ -40,6 +42,8 @@
 		55846523255BE9FA002F894E /* mapsCoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = mapsCoreData.xcdatamodel; sourceTree = "<group>"; };
 		55A4020C255C3E1A00B3A4A4 /* SetMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetMarker.swift; sourceTree = "<group>"; };
 		55A40217255C457500B3A4A4 /* extensionColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensionColor.swift; sourceTree = "<group>"; };
+		55B84F1725655959001D4DA1 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		55B84F2225656380001D4DA1 /* TabbleViewSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbleViewSettings.swift; sourceTree = "<group>"; };
 		55BCD5A125653FEE007920CF /* CustomAlertProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertProtocol.swift; sourceTree = "<group>"; };
 		55D136B32554548000A02A65 /* VasyaMaps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VasyaMaps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55D136B62554548000A02A65 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -101,12 +105,22 @@
 			path = Storyboard;
 			sourceTree = "<group>";
 		};
+		55B84F1A25655B41001D4DA1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5519D60A255D7CD700D6B5C6 /* AlertPopUpView.swift */,
+				55B84F1725655959001D4DA1 /* SettingView.swift */,
+				55B84F2225656380001D4DA1 /* TabbleViewSettings.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		55BCD59825653B2C007920CF /* CustomAlert */ = {
 			isa = PBXGroup;
 			children = (
+				55B84F1A25655B41001D4DA1 /* View */,
 				55BCD5A025653EE1007920CF /* Model */,
 				5519D607255D7B2600D6B5C6 /* CustomAlert.swift */,
-				5519D60A255D7CD700D6B5C6 /* AlertPopUpView.swift */,
 			);
 			path = CustomAlert;
 			sourceTree = "<group>";
@@ -292,8 +306,10 @@
 				55BCD5A225653FEE007920CF /* CustomAlertProtocol.swift in Sources */,
 				5519D618255D933F00D6B5C6 /* UIView+Message.swift in Sources */,
 				55A40218255C457500B3A4A4 /* extensionColor.swift in Sources */,
+				55B84F1825655959001D4DA1 /* SettingView.swift in Sources */,
 				55846524255BE9FA002F894E /* mapsCoreData.xcdatamodeld in Sources */,
 				55D136B72554548000A02A65 /* AppDelegate.swift in Sources */,
+				55B84F2325656380001D4DA1 /* TabbleViewSettings.swift in Sources */,
 				55359EAE255C227B003E3561 /* LocationModel.swift in Sources */,
 				55359EB3255C2706003E3561 /* Strings.swift in Sources */,
 				5519D608255D7B2600D6B5C6 /* CustomAlert.swift in Sources */,
