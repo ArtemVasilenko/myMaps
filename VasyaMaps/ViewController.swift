@@ -5,12 +5,12 @@ import CoreData
 import SwiftEntryKit
 
 class ViewController: UIViewController, PlacementOnLocation {
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     
     @IBOutlet weak var mapView: GMSMapView!
     var pickerView = UIPickerView()
     var locations = [NSManagedObject]()
-    
     var locationMager: CLLocationManager?
     
     override func viewDidLoad() {
@@ -31,8 +31,7 @@ class ViewController: UIViewController, PlacementOnLocation {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let managedContext = appDelegate.persistentContainer.viewContext
+        let managedContext = self.appDelegate.persistentContainer.viewContext
         
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: CoreDataValues.entityLocation.rawValue)
         
@@ -97,11 +96,12 @@ extension ViewController: GMSMapViewDelegate, LocationProtocol, CustomALertProto
             if let placemarks = placemarks, let placemark = placemarks.first {
                 DispatchQueue.main.async {
                     
-                    let city = placemark.name ?? "unknown"
-                    let address = placemark.locality ?? "unknown"
+                    let city = placemark.locality ?? "unknown"
+                    let address = placemark.name ?? "unknown"
                     let country = placemark.country ?? "unknown"
+                    let markerTitle = marker.title ?? "unknown"
                     
-                    self.showCustomAlert(markerTitle: city, country: country, city: city, address: address)
+                    self.showCustomAlert(markerTitle: markerTitle, country: country, city: city, address: address)
                     
                 }
             }
