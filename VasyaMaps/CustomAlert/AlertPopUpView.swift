@@ -23,6 +23,8 @@ class AlertPopUpView: UIView {
         
         setupElements()
         setupConstraints()
+        
+        
     }
     
     required init?(coder: NSCoder) {
@@ -42,9 +44,13 @@ extension AlertPopUpView {
     }
     
     @objc func buttonPressed() {
-        message.action()
+//        message.action()
         
-    
+        let testView = UIView(frame: CGRect(x: 50, y: 50, width: 200, height: 200))
+        testView.backgroundColor = .red
+        
+        self.addSubview(testView)
+        
     }
     
 }

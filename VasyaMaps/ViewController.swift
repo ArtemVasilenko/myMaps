@@ -105,13 +105,11 @@ extension ViewController: GMSMapViewDelegate, LocationProtocol, CustomALertProto
                     
                 }
             }
-            
         }
-        
         return true
     }
-    
 }
+
 extension ViewController {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         1
