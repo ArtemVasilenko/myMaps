@@ -6,7 +6,7 @@ class SettingsView: UIView {
     init(frame: CGRect, color: UIColor, tableView: UITableView, location: NSManagedObject) {
                 
         super.init(frame: UIScreen.main.bounds)
-        
+
         self.backgroundColor = color
         self.layer.cornerRadius = 20.0
         self.location = location
@@ -29,7 +29,7 @@ class SettingsView: UIView {
 
 extension SettingsView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        4
+        5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -48,23 +48,24 @@ extension SettingsView: UITableViewDelegate, UITableViewDataSource {
         firstCellTextfield.textColor = .white
         firstCellTextfield.text = self.location?.value(forKey: CoreDataValues.attributeName.rawValue) as? String
         
+        let buttonDone = UIButton()
+        buttonDone.frame = CGRect(x: self.frame.origin.x + 20, y: self.frame.origin.y, width: 100, height: 40)
+        buttonDone.layer.cornerRadius = 20
+        buttonDone.backgroundColor = .white
+        buttonDone.setAttributedTitle(NSAttributedString(string: "OK"), for: .normal)
+        buttonDone.titleLabel?.textColor = .black
+        
+        
         
         switch indexPath.row {
         case 0: cell.textLabel?.text = "Marker settings:"
         case 1: cell.addSubview(firstCellTextfield)
-                        
+        case 3: cell.addSubview(buttonDone)
         default: break
         }
         
         return cell
     }
-    
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        <#code#>
-//    }
-    
-    
-    
     
 }
 
