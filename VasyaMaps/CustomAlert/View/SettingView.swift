@@ -1,15 +1,19 @@
 import UIKit
+import CoreData
 
 class SettingsView: UIView {
-    init(frame: CGRect, color: UIColor, tableView: UITableView) {
+    var location: NSManagedObject?
+    init(frame: CGRect, color: UIColor, tableView: UITableView, location: NSManagedObject) {
                 
         super.init(frame: UIScreen.main.bounds)
         
         self.backgroundColor = color
         self.layer.cornerRadius = 20.0
+        self.location = location
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         tableView.frame = CGRect(x: self.frame.origin.x, y: self.frame.origin.y + 30, width: self.frame.width, height: self.frame.height)
+        tableView.isUserInteractionEnabled = true
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -34,15 +38,42 @@ extension SettingsView: UITableViewDelegate, UITableViewDataSource {
         cell.backgroundColor = #colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1)
         cell.textLabel?.textColor = .white
         
+        let testTextField = UITextField()
+        testTextField.delegate = self
+        
+        testTextField.frame = cell.frame
+        testTextField.backgroundColor = .red
+        testTextField.keyboardType = .default
+        testTextField.returnKeyType = .done
+        testTextField.enablesReturnKeyAutomatically = true
+        
+        testTextField.text = self.location?.value(forKey: CoreDataValues.attributeName.rawValue) as? String
+        
+        
         switch indexPath.row {
-        case 0: cell.textLabel?.text = "test"
-            
+        case 0: cell.textLabel?.text = "Marker settings:"
+        case 1: cell.addSubview(testTextField)
+                        
         default: break
         }
-        
         
         return cell
     }
     
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        <#code#>
+//    }
+    
+    
+    
+    
+}
+
+extension SettingsView: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.endEditing(true)
+        return false
+    }
     
 }

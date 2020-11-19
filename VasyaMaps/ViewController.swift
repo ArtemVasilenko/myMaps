@@ -79,9 +79,6 @@ extension ViewController: CLLocationManagerDelegate {
 }
 
 extension ViewController: GMSMapViewDelegate, LocationProtocol, CustomALertProtocol {
-    
-    
-    
     func mapView(_ mapView: GMSMapView, didLongPressAt coordinate: CLLocationCoordinate2D) {
         rememberLocation(coordinate, self.pickerView, self.mapView, self)
     }
@@ -102,7 +99,7 @@ extension ViewController: GMSMapViewDelegate, LocationProtocol, CustomALertProto
                     let markerTitle = marker.title ?? "unknown"
                     
                     self.showCustomAlert(markerTitle: markerTitle, country: country, city: city, address: address, location: self.setLocationValuesInCustomAlert(tapMarker: marker))
-                    
+            
                 }
             }
         }

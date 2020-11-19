@@ -40,12 +40,11 @@ extension AlertPopUpView {
     
     @objc func buttonPressed() {
         
-        self.addSubview(SettingsView(frame: self.frame, color: .clear, tableView: TableViewSettings()))
+        self.addSubview(SettingsView(frame: self.frame, color: .clear, tableView: TableViewSettings(), location: self.location))
         
     }
     
 }
-
 
 extension AlertPopUpView {
     
