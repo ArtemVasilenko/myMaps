@@ -54,6 +54,9 @@ extension SettingsView: UITableViewDelegate, UITableViewDataSource {
         buttonDone.backgroundColor = .white
         buttonDone.setAttributedTitle(NSAttributedString(string: "OK"), for: .normal)
         buttonDone.titleLabel?.textColor = .black
+        buttonDone.addTarget(self, action: #selector(buttonDonePressed), for: .touchUpInside)
+        
+        
         
         
         
@@ -65,6 +68,10 @@ extension SettingsView: UITableViewDelegate, UITableViewDataSource {
         }
         
         return cell
+    }
+    
+    @objc func buttonDonePressed() {
+        print("hopa")
     }
     
 }
