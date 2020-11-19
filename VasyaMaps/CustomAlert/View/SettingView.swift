@@ -25,7 +25,7 @@ class SettingsView: UIView {
 
 extension SettingsView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        20
+        4
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -33,7 +33,12 @@ extension SettingsView: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         cell.backgroundColor = #colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1)
         cell.textLabel?.textColor = .white
-        cell.textLabel?.text = "don"
+        
+        switch indexPath.row {
+        case 0: cell.textLabel?.text = "test"
+            
+        default: break
+        }
         
         
         return cell

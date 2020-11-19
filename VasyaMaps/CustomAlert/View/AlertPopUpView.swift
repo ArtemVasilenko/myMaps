@@ -1,5 +1,6 @@
 import UIKit
 import SwiftEntryKit
+import CoreData
 
 class AlertPopUpView: UIView {
     
@@ -9,9 +10,11 @@ class AlertPopUpView: UIView {
     private let button = UIButton()
     private let imageView = UIImageView()
     private let buttonDelete = UIButton()
+    private var location = NSManagedObject()
      
-    init(with message: EKPopUpMessage) {
+    init(with message: EKPopUpMessage, location: NSManagedObject) {
         self.message = message
+        self.location = location
         super.init(frame: UIScreen.main.bounds)
         
         setupElements()
