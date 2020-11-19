@@ -12,6 +12,20 @@ class TableViewSettings: UITableView {
         
     }
     
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.frame.origin.y == 0 {
+                self.frame.origin.y -= keyboardSize.height - (keyboardSize.height / 2)
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.frame.origin.y != 0 {
+            self.frame.origin.y = 0
+        }
+    }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

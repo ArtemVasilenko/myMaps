@@ -5,7 +5,7 @@ struct CustomAlert {
     static var shared: CustomAlert = CustomAlert()
     
     func setupAttributes() -> EKAttributes {
-        var attributes = EKAttributes.bottomToast
+        var attributes = EKAttributes.topToast
         
         attributes.displayDuration = .infinity
         

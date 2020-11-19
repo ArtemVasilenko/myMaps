@@ -17,9 +17,9 @@ class SettingsView: UIView {
         tableView.delegate = self
         tableView.dataSource = self
         
-        
         self.addSubview(tableView)
     }
+    
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -38,21 +38,20 @@ extension SettingsView: UITableViewDelegate, UITableViewDataSource {
         cell.backgroundColor = #colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1)
         cell.textLabel?.textColor = .white
         
-        let testTextField = UITextField()
-        testTextField.delegate = self
-        
-        testTextField.frame = cell.frame
-        testTextField.backgroundColor = .red
-        testTextField.keyboardType = .default
-        testTextField.returnKeyType = .done
-        testTextField.enablesReturnKeyAutomatically = true
-        
-        testTextField.text = self.location?.value(forKey: CoreDataValues.attributeName.rawValue) as? String
+        let firstCellTextfield = UITextField()
+        firstCellTextfield.delegate = self
+        firstCellTextfield.frame = CGRect(x: cell.frame.origin.x + 20, y: cell.frame.origin.y, width: cell.frame.width, height: cell.frame.height)
+        firstCellTextfield.backgroundColor = .clear
+        firstCellTextfield.keyboardType = .default
+        firstCellTextfield.returnKeyType = .done
+        firstCellTextfield.enablesReturnKeyAutomatically = true
+        firstCellTextfield.textColor = .white
+        firstCellTextfield.text = self.location?.value(forKey: CoreDataValues.attributeName.rawValue) as? String
         
         
         switch indexPath.row {
         case 0: cell.textLabel?.text = "Marker settings:"
-        case 1: cell.addSubview(testTextField)
+        case 1: cell.addSubview(firstCellTextfield)
                         
         default: break
         }
