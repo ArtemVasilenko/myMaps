@@ -30,7 +30,6 @@ extension CustomALertProtocol {
             if tapMarker.title == name as? String && tapMarker.position.longitude == longtitude as! CLLocationDegrees && tapMarker.position.latitude == latitude as! CLLocationDegrees {
                 location = markerLocation
                 print(location)
-                print("sudoy!")
             }
             
         }

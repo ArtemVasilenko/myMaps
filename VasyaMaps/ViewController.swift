@@ -33,10 +33,8 @@ class ViewController: UIViewController, PlacementOnLocation {
     }
     
     
-    
     override func viewWillAppear(_ animated: Bool) {
-        updateMarkers(mapView: self.mapView)
-        
+        self.markersUpdate(mapView: self.mapView)
     }
     
 }
@@ -97,7 +95,6 @@ extension ViewController: GMSMapViewDelegate, LocationProtocol, CustomALertProto
                     _ = marker.icon
                     
                     self.showCustomAlert(markerTitle: markerTitle, country: country, city: city, address: address, location: self.setLocationValuesInCustomAlert(tapMarker: marker), marker: marker)
-            
                 }
             }
         }

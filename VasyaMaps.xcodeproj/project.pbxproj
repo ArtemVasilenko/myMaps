@@ -112,6 +112,7 @@
 				5519D60A255D7CD700D6B5C6 /* AlertPopUpView.swift */,
 				55B84F1725655959001D4DA1 /* SettingView.swift */,
 				55B84F2225656380001D4DA1 /* TabbleViewSettings.swift */,
+				5519D607255D7B2600D6B5C6 /* CustomAlert.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -121,7 +122,6 @@
 			children = (
 				55B84F1A25655B41001D4DA1 /* View */,
 				55BCD5A025653EE1007920CF /* Model */,
-				5519D607255D7B2600D6B5C6 /* CustomAlert.swift */,
 			);
 			path = CustomAlert;
 			sourceTree = "<group>";

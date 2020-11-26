@@ -25,7 +25,6 @@ class SettingsView: UIView {
         self.addSubview(tableView)
     }
     
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -65,7 +64,7 @@ extension SettingsView: UITextFieldDelegate, PlacementOnLocation {
         
         guard textField.text != nil else { return false }
         
-        changeAttribute(entity: self.location ?? NSManagedObject(), name: textField.text ?? "")
+        self.markerChange(entity: self.location ?? NSManagedObject(), name: textField.text ?? "")
         
         self.marker?.title = textField.text
         return true
@@ -100,7 +99,7 @@ extension SettingsView {
     }
     
     @objc func buttonDonePressed() {
-        deleteMarker(entity: self.location ?? NSManagedObject(), marker: self.marker ?? GMSMarker())        
+        self.markerDelete(entity: self.location ?? NSManagedObject(), marker: self.marker ?? GMSMarker())
     }
     
 }
