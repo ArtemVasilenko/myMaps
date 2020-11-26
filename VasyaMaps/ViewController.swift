@@ -36,6 +36,7 @@ class ViewController: UIViewController, PlacementOnLocation {
     
     override func viewWillAppear(_ animated: Bool) {
         updateMarkers(mapView: self.mapView)
+        
     }
     
 }

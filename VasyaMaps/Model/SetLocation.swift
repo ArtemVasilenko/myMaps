@@ -10,7 +10,7 @@ protocol PlacementOnLocation: SetMarkerProtocol {
 }
 
 extension PlacementOnLocation {
-
+    
     func placementOnLocation (entity: [NSManagedObject], mapView: GMSMapView) {
         for value in entity {
             createAndSetMarker(entity: value, mapView: mapView)
@@ -19,7 +19,7 @@ extension PlacementOnLocation {
     func updateMarkers(mapView: GMSMapView) {
         print("Markers is update!")
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
-
+        
         let managedContext = appDelegate.persistentContainer.viewContext
         
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: CoreDataValues.entityLocation.rawValue)
@@ -31,45 +31,51 @@ extension PlacementOnLocation {
         }
         
         placementOnLocation(entity: AppDelegate.location, mapView: mapView)
+        
+        print(AppDelegate.location)
     }
     
     func changeAttribute(entity: NSManagedObject, name: String) {
-        for i in AppDelegate.location {
-            
-            if i == entity {
-                
+        
                 let appDelegate = UIApplication.shared.delegate as! AppDelegate
                 let managedContext = appDelegate.persistentContainer.viewContext
-                                
-                i.setValue(name, forKey: CoreDataValues.attributeName.rawValue)
+                
+                let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: CoreDataValues.entityLocation.rawValue)
                 
                 do {
+                    let objects = try managedContext.fetch(fetchRequest)
+                    for object in objects {
+                        if object == entity {
+                            object.setValue(name, forKey: CoreDataValues.attributeName.rawValue)
+                        }
+                    }
+                    
                     try managedContext.save()
+
                 } catch let error as NSError {
-                    print("Could not save. \(error), \(error.userInfo)")
-                  }
-            
-            }
-        }
+                    print("Could not delete object. \(error), \(error.userInfo)")
+                }
     }
     
     func deleteMarker(entity: NSManagedObject, marker: GMSMarker) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let managedContext = appDelegate.persistentContainer.viewContext
         
-        for i in AppDelegate.location {
-            
-            if i == entity {
-                
-                let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                let managedContext = appDelegate.persistentContainer.viewContext
-                
-                managedContext.delete(i)
-                
-                marker.map = nil
-            
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: CoreDataValues.entityLocation.rawValue)
+        
+        do {
+            let objects = try managedContext.fetch(fetchRequest)
+            for object in objects {
+                if object == entity {
+                    managedContext.delete(object)
+                }
             }
-        }
-        
-    }
+            
+            try managedContext.save()
+            marker.map = nil
 
-    
+        } catch let error as NSError {
+            print("Could not delete object. \(error), \(error.userInfo)")
+        }
+    }
 }

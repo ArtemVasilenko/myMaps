@@ -100,9 +100,7 @@ extension SettingsView {
     }
     
     @objc func buttonDonePressed() {
-        deleteMarker(entity: self.location ?? NSManagedObject(), marker: self.marker ?? GMSMarker())
-//        updateMarkers(mapView: AppDelegate.mapsView)
-        
+        deleteMarker(entity: self.location ?? NSManagedObject(), marker: self.marker ?? GMSMarker())        
     }
     
 }
