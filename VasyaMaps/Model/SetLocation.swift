@@ -5,7 +5,7 @@ import GoogleMaps
 protocol PlacementOnLocation: SetMarkerProtocol {
     func placementOnLocation (entity: [NSManagedObject], mapView: GMSMapView)
     func markersUpdate(mapView: GMSMapView)
-    func markerChange(entity: NSManagedObject, name: String)
+    func markerChangeTitle(entity: NSManagedObject, name: String)
     func markerDelete(entity: NSManagedObject, marker: GMSMarker)
 }
 
@@ -33,7 +33,7 @@ extension PlacementOnLocation {
         print(AppDelegate.location)
     }
     
-    func markerChange(entity: NSManagedObject, name: String) {
+    func markerChangeTitle(entity: NSManagedObject, name: String) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let managedContext = appDelegate.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: CoreDataValues.entityLocation.rawValue)
@@ -51,6 +51,7 @@ extension PlacementOnLocation {
         } catch let error as NSError {
             print("Could not delete object. \(error), \(error.userInfo)")
         }
+        print(entity)
     }
     
     func markerDelete(entity: NSManagedObject, marker: GMSMarker) {

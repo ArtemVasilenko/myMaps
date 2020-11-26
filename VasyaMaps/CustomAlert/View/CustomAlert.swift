@@ -5,7 +5,7 @@ struct CustomAlert {
     static var shared: CustomAlert = CustomAlert()
     
     func setupAttributes() -> EKAttributes {
-        var attributes = EKAttributes.topToast
+        var attributes = EKAttributes.topNote
         
         attributes.displayDuration = .infinity
         
@@ -31,6 +31,7 @@ struct CustomAlert {
         attributes.roundCorners = .all(radius: 25)
         
         attributes.positionConstraints.size = .init(width: .offset(value: 0), height: .intrinsic)
+        
         
         return attributes
     }
