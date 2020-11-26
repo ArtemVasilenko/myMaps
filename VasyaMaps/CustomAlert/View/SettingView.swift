@@ -1,24 +1,26 @@
 import UIKit
 import CoreData
+import GoogleMaps
 
 class SettingsView: UIView {
     var location: NSManagedObject?
-    private let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    var marker: GMSMarker?
 
-    
-    init(frame: CGRect, color: UIColor, tableView: UITableView, location: NSManagedObject) {
+    init(frame: CGRect, tableView: UITableView, location: NSManagedObject, marker: GMSMarker) {
                 
         super.init(frame: UIScreen.main.bounds)
 
-        self.backgroundColor = color
+        self.backgroundColor = .clear
         self.layer.cornerRadius = 20.0
         self.location = location
+        self.marker = marker
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         tableView.frame = CGRect(x: self.frame.origin.x, y: self.frame.origin.y + 30, width: self.frame.width, height: self.frame.height)
         tableView.isUserInteractionEnabled = true
         tableView.delegate = self
         tableView.dataSource = self
+        
         
         self.addSubview(tableView)
     }
@@ -42,11 +44,10 @@ extension SettingsView: UITableViewDelegate, UITableViewDataSource {
         cell.backgroundColor = #colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1)
         cell.textLabel?.textColor = .white
         
-        
         switch indexPath.row {
         case 0: cell.textLabel?.text = "Marker settings:"
         case 1: cell.addSubview(self.firstCell(cell))
-        case 3: cell.addSubview(self.thirdCell(cell))
+        case 3: cell.addSubview(self.thirdCell())
         default: break
         }
         
@@ -56,30 +57,18 @@ extension SettingsView: UITableViewDelegate, UITableViewDataSource {
     
 }
 
-extension SettingsView: UITextFieldDelegate {
+extension SettingsView: UITextFieldDelegate, PlacementOnLocation {
+    
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.endEditing(true)
+        
         guard textField.text != nil else { return false }
         
-        for i in AppDelegate.location {
-            
-            if i == self.location {
-                i.setValue(textField.text, forKey: CoreDataValues.attributeName.rawValue)
-                
-                print(i.value(forKey: CoreDataValues.attributeName.rawValue))
-                let managedContext = self.appDelegate.persistentContainer.viewContext
-
-                do {
-                    try managedContext.save()
-                } catch let error as NSError {
-                    print("Could not save. \(error), \(error.userInfo)")
-                  }
-            }
-                        
-        }
-
-        return false
+        changeAttribute(entity: self.location ?? NSManagedObject(), name: textField.text ?? "")
+        
+        self.marker?.title = textField.text
+        return true
     }
     
 }
@@ -98,12 +87,12 @@ extension SettingsView {
         return firstCellTextfield
     }
     
-    func thirdCell(_ cell: UITableViewCell) -> UIButton {
+    func thirdCell() -> UIButton {
         let buttonDone = UIButton()
         buttonDone.frame = CGRect(x: self.frame.origin.x + 20, y: self.frame.origin.y, width: 100, height: 40)
         buttonDone.layer.cornerRadius = 20
         buttonDone.backgroundColor = .white
-        buttonDone.setAttributedTitle(NSAttributedString(string: "OK"), for: .normal)
+        buttonDone.setAttributedTitle(NSAttributedString(string: "Delete"), for: .normal)
         buttonDone.titleLabel?.textColor = .black
         buttonDone.addTarget(self, action: #selector(buttonDonePressed), for: .touchUpInside)
         
@@ -111,7 +100,9 @@ extension SettingsView {
     }
     
     @objc func buttonDonePressed() {
-        print("hopa")
+        deleteMarker(entity: self.location ?? NSManagedObject(), marker: self.marker ?? GMSMarker())
+//        updateMarkers(mapView: AppDelegate.mapsView)
+        
     }
     
 }

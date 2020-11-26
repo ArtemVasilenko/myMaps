@@ -4,6 +4,7 @@ import CoreData
 
 protocol SetMarkerProtocol {
     func createAndSetMarker(entity: NSManagedObject, mapView: GMSMapView)
+
 }
 
 extension SetMarkerProtocol {

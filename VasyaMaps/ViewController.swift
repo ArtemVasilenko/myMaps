@@ -5,17 +5,19 @@ import CoreData
 import SwiftEntryKit
 
 class ViewController: UIViewController, PlacementOnLocation {
-    private let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    static var shared: ViewController = ViewController()
     
+    var mapView = AppDelegate.mapsView
     
-    @IBOutlet weak var mapView: GMSMapView!
     var pickerView = UIPickerView()
-    var locations = [NSManagedObject]()
     var locationMager: CLLocationManager?
     
     override func viewDidLoad() {
         
         let camera: GMSCameraPosition = GMSCameraPosition.camera(withLatitude: 48.465339, longitude: 35.076775, zoom: 15.0)
+        let frameOfMap = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+        self.mapView = GMSMapView.map(withFrame: frameOfMap, camera: camera)
+        self.view.addSubview(mapView)
         
         self.mapView.camera = camera
         
@@ -30,18 +32,10 @@ class ViewController: UIViewController, PlacementOnLocation {
         self.mapView.settings.compassButton = true
     }
     
+    
+    
     override func viewWillAppear(_ animated: Bool) {
-        let managedContext = self.appDelegate.persistentContainer.viewContext
-        
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: CoreDataValues.entityLocation.rawValue)
-        
-        do {
-            AppDelegate.location = try managedContext.fetch(fetchRequest)
-        } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
-        }
-        
-        placementOnLocation(entity: AppDelegate.location, mapView: self.mapView)
+        updateMarkers(mapView: self.mapView)
     }
     
 }
@@ -79,15 +73,17 @@ extension ViewController: CLLocationManagerDelegate {
 }
 
 extension ViewController: GMSMapViewDelegate, LocationProtocol, CustomALertProtocol {
+    
+    
     func mapView(_ mapView: GMSMapView, didLongPressAt coordinate: CLLocationCoordinate2D) {
         rememberLocation(coordinate, self.pickerView, self.mapView, self)
     }
     
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+        
         let markerLocation = CLLocation(latitude: marker.position.latitude, longitude: marker.position.longitude)
-        
+                
         let geoCoder = CLGeocoder()
-        
         geoCoder.reverseGeocodeLocation(markerLocation) { (placemarks, error) in
             
             if let placemarks = placemarks, let placemark = placemarks.first {
@@ -97,8 +93,9 @@ extension ViewController: GMSMapViewDelegate, LocationProtocol, CustomALertProto
                     let address = placemark.name ?? "unknown"
                     let country = placemark.country ?? "unknown"
                     let markerTitle = marker.title ?? "unknown"
+                    _ = marker.icon
                     
-                    self.showCustomAlert(markerTitle: markerTitle, country: country, city: city, address: address, location: self.setLocationValuesInCustomAlert(tapMarker: marker))
+                    self.showCustomAlert(markerTitle: markerTitle, country: country, city: city, address: address, location: self.setLocationValuesInCustomAlert(tapMarker: marker), marker: marker)
             
                 }
             }

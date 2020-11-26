@@ -1,6 +1,7 @@
 import UIKit
 import SwiftEntryKit
 import CoreData
+import GoogleMaps
 
 class AlertPopUpView: UIView {
     
@@ -11,10 +12,12 @@ class AlertPopUpView: UIView {
     private let imageView = UIImageView()
     private let buttonDelete = UIButton()
     private var location = NSManagedObject()
+    private var marker = GMSMarker()
      
-    init(with message: EKPopUpMessage, location: NSManagedObject) {
+    init(with message: EKPopUpMessage, location: NSManagedObject, marker: GMSMarker) {
         self.message = message
         self.location = location
+        self.marker = marker
         super.init(frame: UIScreen.main.bounds)
         
         setupElements()
@@ -40,7 +43,7 @@ extension AlertPopUpView {
     
     @objc func buttonPressed() {
         
-        self.addSubview(SettingsView(frame: self.frame, color: .clear, tableView: TableViewSettings(), location: self.location))
+        self.addSubview(SettingsView(frame: self.frame, tableView: TableViewSettings(), location: self.location, marker: self.marker))
         
     }
     

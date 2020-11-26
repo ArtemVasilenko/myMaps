@@ -8,6 +8,7 @@ let googleApiKey = "AIzaSyDIEISIkb-Q_4s7rw72ttXX93Iv4HPZLFY"
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     static var location = [NSManagedObject]()
+    static var mapsView = GMSMapView()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         

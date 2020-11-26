@@ -4,7 +4,7 @@ import CoreData
 import GoogleMaps
 
 protocol CustomALertProtocol {
-    func showCustomAlert(markerTitle: String, country: String, city: String, address: String, location: NSManagedObject)
+    func showCustomAlert(markerTitle: String, country: String, city: String, address: String, location: NSManagedObject, marker: GMSMarker)
     
     func setLocationValuesInCustomAlert(tapMarker: GMSMarker) -> NSManagedObject
 }
@@ -12,9 +12,9 @@ protocol CustomALertProtocol {
 
 extension CustomALertProtocol {
     
-    func showCustomAlert(markerTitle: String, country: String, city: String, address: String, location: NSManagedObject) {
+    func showCustomAlert(markerTitle: String, country: String, city: String, address: String, location: NSManagedObject, marker: GMSMarker) {
         
-        SwiftEntryKit.display(entry: AlertPopUpView(with: CustomAlert.shared.setupMessage(title: markerTitle, description: "\(country), \(city), \(address)"), location: location), using: CustomAlert.shared.setupAttributes())
+        SwiftEntryKit.display(entry: AlertPopUpView(with: CustomAlert.shared.setupMessage(title: markerTitle, description: "\(country), \(city), \(address)"), location: location, marker: marker), using: CustomAlert.shared.setupAttributes())
         
     }
     
@@ -30,6 +30,7 @@ extension CustomALertProtocol {
             if tapMarker.title == name as? String && tapMarker.position.longitude == longtitude as! CLLocationDegrees && tapMarker.position.latitude == latitude as! CLLocationDegrees {
                 location = markerLocation
                 print(location)
+                print("sudoy!")
             }
             
         }

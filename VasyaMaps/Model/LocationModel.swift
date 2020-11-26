@@ -3,8 +3,14 @@ import GoogleMaps
 import UIKit
 import CoreData
 
+protocol UpdateMarkerProtocol {
+    func updateMarker(marker: GMSMarker) -> GMSMarker
+
+}
+
 protocol LocationProtocol: UIPickerViewDelegate, UIPickerViewDataSource, SetMarkerProtocol {
     func rememberLocation(_ coordinate: CLLocationCoordinate2D, _ colorPickerView: UIPickerView, _ mapView: GMSMapView, _ vc: UIViewController)
+    
 }
 
 extension LocationProtocol {
@@ -12,9 +18,7 @@ extension LocationProtocol {
         
         let alert = UIAlertController(title: SaveLocationAlert.shared.title, message: SaveLocationAlert.shared.alertMessage, preferredStyle: .alert)
             
-        alert.addTextField { (textField) in
-//            textField.placeholder = SaveLocationAlert.shared.enterName
-        }
+        alert.addTextField { (textField) in }
         
         colorPickerView.delegate = self
         colorPickerView.dataSource = self
@@ -27,7 +31,6 @@ extension LocationProtocol {
             
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let managedContext = appDelegate.persistentContainer.viewContext
-            
             
             let entity = NSEntityDescription.entity(forEntityName: CoreDataValues.entityLocation.rawValue, in: managedContext) ?? NSEntityDescription()
             

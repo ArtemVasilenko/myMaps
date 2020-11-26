@@ -53,6 +53,7 @@
 		55D136BF2554548500A02A65 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		55D136C22554548500A02A65 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		55D136C42554548500A02A65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		55D80B0D256E64DB004E6921 /* mapsCoreData 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "mapsCoreData 2.xcdatamodel"; sourceTree = "<group>"; };
 		CC1FDB7C0C4A1A60B784C9A2 /* Pods-VasyaMaps.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VasyaMaps.release.xcconfig"; path = "Target Support Files/Pods-VasyaMaps/Pods-VasyaMaps.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -530,6 +531,7 @@
 		55846522255BE9FA002F894E /* mapsCoreData.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				55D80B0D256E64DB004E6921 /* mapsCoreData 2.xcdatamodel */,
 				55846523255BE9FA002F894E /* mapsCoreData.xcdatamodel */,
 			);
 			currentVersion = 55846523255BE9FA002F894E /* mapsCoreData.xcdatamodel */;
