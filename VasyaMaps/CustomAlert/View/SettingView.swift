@@ -16,7 +16,7 @@ class SettingsView: UIView {
         self.marker = marker
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
-        tableView.frame = CGRect(x: self.frame.origin.x, y: self.frame.origin.y + 30, width: self.frame.width, height: self.frame.height)
+        tableView.frame = CGRect(x: self.frame.origin.x, y: self.frame.origin.y + 5, width: self.frame.width, height: self.frame.height)
         tableView.isUserInteractionEnabled = true
         tableView.delegate = self
         tableView.dataSource = self
@@ -47,9 +47,9 @@ extension SettingsView: UITableViewDelegate, UITableViewDataSource {
         
         switch indexPath.row {
         case 0: cell.textLabel?.text = "Marker settings:"
-        case 1: cell.addSubview(self.firstCell(cell))
-        case 2: cell.addSubview(self.secondCell(cell))
-        case 3: cell.addSubview(self.thirdCell())
+        case 1: cell.addSubview(self.markerTitleTextField(cell))
+        case 2: cell.addSubview(self.markerColorPickerView(cell))
+        case 4: cell.addSubview(self.markerDeleteButton())
         default: break
         }
         
@@ -75,45 +75,44 @@ extension SettingsView: UITextFieldDelegate, PlacementOnLocation {
 }
 
 extension SettingsView {
-    func firstCell(_ cell: UITableViewCell) -> UITextField {
-        let firstCellTextfield = UITextField()
-        firstCellTextfield.delegate = self
-        firstCellTextfield.frame = CGRect(x: cell.frame.origin.x + 20, y: cell.frame.origin.y, width: cell.frame.width, height: cell.frame.height)
-        firstCellTextfield.backgroundColor = .clear
-        firstCellTextfield.keyboardType = .default
-        firstCellTextfield.returnKeyType = .done
-        firstCellTextfield.enablesReturnKeyAutomatically = true
-        firstCellTextfield.textColor = .white
-        firstCellTextfield.textAlignment = .center
-        firstCellTextfield.text = self.location?.value(forKey: CoreDataValues.attributeName.rawValue) as? String
-        return firstCellTextfield
+    func markerTitleTextField(_ cell: UITableViewCell) -> UITextField {
+        let textField = UITextField()
+        textField.delegate = self
+        textField.frame = CGRect(x: cell.frame.origin.x + 20, y: cell.frame.origin.y, width: cell.frame.width, height: cell.frame.height)
+        textField.backgroundColor = .clear
+        textField.keyboardType = .default
+        textField.returnKeyType = .done
+        textField.enablesReturnKeyAutomatically = true
+        textField.textColor = .white
+        textField.textAlignment = .center
+        textField.text = self.location?.value(forKey: CoreDataValues.attributeName.rawValue) as? String
+        return textField
     }
     
-    func secondCell(_ cell: UITableViewCell) -> UIPickerView {
-        let secondCellPickerView = UIPickerView()
-        secondCellPickerView.delegate = self
-        secondCellPickerView.dataSource = self
-        secondCellPickerView.frame = CGRect(x: cell.frame.origin.x + 20, y: cell.frame.origin.y, width: cell.frame.width, height: cell.frame.height)
+    func markerColorPickerView(_ cell: UITableViewCell) -> UIPickerView {
+        let picker = UIPickerView()
+        picker.delegate = self
+        picker.dataSource = self
+        picker.frame = CGRect(x: cell.frame.origin.x + 20, y: cell.frame.origin.y, width: cell.frame.width, height: cell.frame.height)
         
-        return secondCellPickerView
+        return picker
     }
     
-    func thirdCell() -> UIButton {
-        let buttonDone = UIButton()
-        buttonDone.frame = CGRect(x: self.frame.origin.x + 20, y: self.frame.origin.y, width: 100, height: 40)
-        buttonDone.layer.cornerRadius = 20
-        buttonDone.backgroundColor = .white
-        buttonDone.setAttributedTitle(NSAttributedString(string: "Delete"), for: .normal)
-        buttonDone.titleLabel?.textColor = .black
-        buttonDone.addTarget(self, action: #selector(buttonDonePressed), for: .touchUpInside)
+    func markerDeleteButton() -> UIButton {
+        let button = UIButton()
+        button.frame = CGRect(x: self.frame.origin.x + self.frame.width - 140, y: self.frame.origin.y, width: 100, height: 40)
+        button.layer.cornerRadius = 20
+        button.backgroundColor = .white
+        button.setAttributedTitle(NSAttributedString(string: "Delete"), for: .normal)
+        button.titleLabel?.textColor = .black
+        button.addTarget(self, action: #selector(buttonDeletePressed), for: .touchUpInside)
         
-        return buttonDone
+        return button
     }
     
-    @objc func buttonDonePressed() {
-        self.markerDelete(entity: self.location ?? NSManagedObject(), marker: self.marker ?? GMSMarker())
+    @objc func buttonDeletePressed() {
+        self.deleteAlert()
     }
-    
 }
 
 extension SettingsView: UIPickerViewDelegate, UIPickerViewDataSource {
@@ -122,49 +121,38 @@ extension SettingsView: UIPickerViewDelegate, UIPickerViewDataSource {
             1
         }
     
-//    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-//        
-//        
-//        var attributedString: NSAttributedString!
-//
-//                switch component {
-//                case 0:
-//                    attributedString = NSAttributedString(string: PinColor.Red.rawValue, attributes: [NSAttributedString.Key.foregroundColor : UIColor.red])
-//                case 1:
-//                    attributedString = NSAttributedString(string: PinColor.Violet.rawValue, attributes: [NSAttributedString.Key.foregroundColor : UIColor.violet])
-//                case 2:
-//                    attributedString = NSAttributedString(string: toString(arrayThree[row]), attributes: [NSForegroundColorAttributeName : UIColor.redColor()])
-//                default:
-//                    attributedString = nil
-//                }
-//
-//                return attributedString
-//        
-//    }
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        
+        var attributedString: NSAttributedString!
+
+                switch component {
+                case 0:
+                    attributedString = NSAttributedString(string: PinColor.Red.rawValue, attributes: [NSAttributedString.Key.foregroundColor : UIColor.red])
+                case 1:
+                    attributedString = NSAttributedString(string: PinColor.Violet.rawValue, attributes: [NSAttributedString.Key.foregroundColor : UIColor.purple])
+                case 2:
+                    attributedString = NSAttributedString(string: PinColor.Blue.rawValue, attributes: [NSAttributedString.Key.foregroundColor : UIColor.blue])
+                case 3:
+                    attributedString = NSAttributedString(string: PinColor.Black.rawValue, attributes: [NSAttributedString.Key.foregroundColor : UIColor.black])
+                case 4:
+                    attributedString = NSAttributedString(string: PinColor.Yellow.rawValue, attributes: [NSAttributedString.Key.foregroundColor : UIColor.yellow])
+                case 5:
+                    attributedString = NSAttributedString(string: PinColor.Green.rawValue, attributes: [NSAttributedString.Key.foregroundColor : UIColor.green])
+                case 6:
+                    attributedString = NSAttributedString(string: PinColor.Gray.rawValue, attributes: [NSAttributedString.Key.foregroundColor : UIColor.gray])
+                
+                default:
+                    attributedString = nil
+                }
+
+                return attributedString
+        
+    }
     
         func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
             return 7
         }
-        
-        func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-            switch row {
-            case 0:
-                return PinColor.Red.rawValue
-            case 1:
-                return PinColor.Violet.rawValue
-            case 2:
-                return PinColor.Blue.rawValue
-            case 3:
-                return PinColor.Black.rawValue
-            case 4:
-                return PinColor.Yellow.rawValue
-            case 5:
-                return PinColor.Green.rawValue
-            default:
-                return PinColor.Gray.rawValue
-            }
-        }
-        
+    
         func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
             switch row {
             case 0:
@@ -185,5 +173,27 @@ extension SettingsView: UIPickerViewDelegate, UIPickerViewDataSource {
                 break
             }
         }
+}
+
+extension SettingsView {
+    
+    func deleteAlert() {
+        
+        let alert = UIAlertController(title: DeleteMarkerAlert.shared.title, message: DeleteMarkerAlert.shared.message, preferredStyle: .alert)
+            
+        
+        let okAction = UIAlertAction(title: DeleteMarkerAlert.shared.okAction, style: .default) { (action) in
+            
+            self.markerDelete(entity: self.location ?? NSManagedObject(), marker: self.marker ?? GMSMarker())
+            
+        }
+        
+        let cancelAction = UIAlertAction(title: DeleteMarkerAlert.shared.cancelAction, style: .cancel, handler: nil)
+
+        alert.addAction(cancelAction)
+        alert.addAction(okAction)
+        
+        self.window?.rootViewController?.present(alert, animated: true, completion: nil)
+    }
     
 }

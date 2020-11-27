@@ -17,3 +17,14 @@ enum CoreDataValues: String {
     case attributeLatitude = "latitude"
     case attributeColor = "colorItem"
 }
+
+struct DeleteMarkerAlert {
+    
+    static var shared: DeleteMarkerAlert = DeleteMarkerAlert()
+    
+    let title = "Delete marker"
+    let message = "Are you realy want to delete marker?"
+    let okAction = "Yes"
+    let cancelAction = "Cancel"
+    
+}
