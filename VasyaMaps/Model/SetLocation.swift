@@ -7,6 +7,7 @@ protocol PlacementOnLocation: SetMarkerProtocol {
     func markersUpdate(mapView: GMSMapView)
     func markerChangeTitle(entity: NSManagedObject, name: String)
     func markerDelete(entity: NSManagedObject, marker: GMSMarker)
+    func markerChangeColor(entity: NSManagedObject, color: String)
 }
 
 extension PlacementOnLocation {
@@ -43,6 +44,27 @@ extension PlacementOnLocation {
             for object in objects {
                 if object == entity {
                     object.setValue(name, forKey: CoreDataValues.attributeName.rawValue)
+                }
+            }
+            
+            try managedContext.save()
+            
+        } catch let error as NSError {
+            print("Could not delete object. \(error), \(error.userInfo)")
+        }
+        print(entity)
+    }
+    
+    func markerChangeColor(entity: NSManagedObject, color: String) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: CoreDataValues.entityLocation.rawValue)
+        
+        do {
+            let objects = try managedContext.fetch(fetchRequest)
+            for object in objects {
+                if object == entity {
+                    object.setValue(color, forKey: CoreDataValues.attributeColor.rawValue)
                 }
             }
             

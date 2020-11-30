@@ -84,8 +84,6 @@ extension SettingsView: UITextFieldDelegate, PlacementOnLocation {
 }
 
 extension SettingsView {
-    
-    
     func markerTitleTextField() -> UITextField {
         let textField = UITextField()
         textField.delegate = self
@@ -106,8 +104,6 @@ extension SettingsView {
         picker.dataSource = self
         picker.frame = CGRect(x: 20, y: 0, width: 200, height: 88)
         
-        
-        
         return picker
     }
     
@@ -124,7 +120,7 @@ extension SettingsView {
     }
     
     @objc func buttonDeletePressed() {
-        self.deleteAlert()
+        self.showDeleteAlert()
     }
     
     func doneButton() -> UIButton {
@@ -140,12 +136,14 @@ extension SettingsView {
     }
     
     @objc func buttonDonePressed() {
+
+        markerChangeColor(entity: self.location ?? NSManagedObject(), color: Color.shared.color?.descriptionImage ?? "")
+        
     }
     
 }
 
-extension SettingsView: UIPickerViewDelegate, UIPickerViewDataSource {
-    
+extension SettingsView: UIPickerViewDelegate, UIPickerViewDataSource {    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         1
     }
@@ -183,6 +181,8 @@ extension SettingsView: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        self.marker?.icon = GMSMarker.markerImage(with: UIColor(named: Color.shared.color?.descriptionImage ?? ""))
+        
         switch row {
         case 0:
             Color.shared.color = .Red
@@ -206,7 +206,7 @@ extension SettingsView: UIPickerViewDelegate, UIPickerViewDataSource {
 
 extension SettingsView {
     
-    func deleteAlert() {
+    func showDeleteAlert() {
         
         let alert = UIAlertController(title: DeleteMarkerAlert.shared.title, message: DeleteMarkerAlert.shared.message, preferredStyle: .alert)
         

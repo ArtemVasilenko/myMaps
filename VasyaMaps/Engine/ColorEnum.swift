@@ -3,7 +3,6 @@ import UIKit
 
 struct Color {
     var color: PinColor?
-    
     static var shared = Color()
 }
 
@@ -37,10 +36,10 @@ enum PinColor : String {
     
     var descriptionImage: String {
         switch self {
-        case .Violet:
-            return "purple"
         case .Red:
             return "red"
+        case .Violet:
+            return "purple"
         case .Green:
             return "green"
         case .Blue:
