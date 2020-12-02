@@ -137,8 +137,8 @@ extension SettingsView {
     
     @objc func buttonDonePressed() {
 
-        markerChangeColor(entity: self.location ?? NSManagedObject(), color: Color.shared.color?.descriptionImage ?? "")
-        
+        markerChangeColor(entity: self.location ?? NSManagedObject(), color: Color.shared.color?.descriptionImage ?? "", marker: self.marker ?? GMSMarker())
+    
     }
     
 }
@@ -181,7 +181,6 @@ extension SettingsView: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        self.marker?.icon = GMSMarker.markerImage(with: UIColor(named: Color.shared.color?.descriptionImage ?? ""))
         
         switch row {
         case 0:
