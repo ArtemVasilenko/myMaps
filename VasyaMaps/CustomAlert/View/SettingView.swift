@@ -140,7 +140,7 @@ extension SettingsView {
     
     @objc func buttonDonePressed() {
         
-        markerChangeColor(entity: self.location ?? NSManagedObject(), color: Color.shared.color?.descriptionImage ?? "", marker: self.marker ?? GMSMarker())
+        self.markerChangeColor(entity: self.location ?? NSManagedObject(), color: Color.shared.color?.descriptionImage ?? "", marker: self.marker ?? GMSMarker())
         
     }
     
