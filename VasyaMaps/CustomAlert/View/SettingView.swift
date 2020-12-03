@@ -104,6 +104,9 @@ extension SettingsView {
         picker.dataSource = self
         picker.frame = CGRect(x: 20, y: 0, width: 200, height: 88)
         
+        picker.selectRow(setColorInPicker(pinColor: Color.shared.color ?? PinColor.Red), inComponent: 0, animated: true)
+
+            
         return picker
     }
     
@@ -136,9 +139,9 @@ extension SettingsView {
     }
     
     @objc func buttonDonePressed() {
-
+        
         markerChangeColor(entity: self.location ?? NSManagedObject(), color: Color.shared.color?.descriptionImage ?? "", marker: self.marker ?? GMSMarker())
-    
+        
     }
     
 }

@@ -6,14 +6,14 @@ struct Color {
     static var shared = Color()
 }
 
-enum PinColor : String {
-    case Red = "Red"
-    case Violet = "Purple"
-    case Green = "Green"
-    case Blue = "Blue"
-    case Black = "Black"
-    case Yellow = "Yellow"
-    case Gray = "Gray"
+enum PinColor : String, CaseIterable {
+    case Red = "red"
+    case Violet = "purple"
+    case Green = "green"
+    case Blue = "blue"
+    case Black = "black"
+    case Yellow = "yellow"
+    case Gray = "gray"
     
     func getColor() -> UIColor {
         switch self {

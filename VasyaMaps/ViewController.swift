@@ -79,7 +79,24 @@ extension ViewController: GMSMapViewDelegate, LocationProtocol, CustomALertProto
     }
     
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+        var colorMarker = String()
         
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+//        let managedContext = appDelegate.persistentContainer.viewContext
+//        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: CoreDataValues.entityLocation.rawValue)
+        
+        for i in AppDelegate.location {
+            if marker.position.latitude == i.value(forKey: CoreDataValues.attributeLatitude.rawValue) as! CLLocationDegrees && marker.position.longitude == i.value(forKey: CoreDataValues.attributeLongtitude.rawValue) as! CLLocationDegrees {
+                colorMarker = i.value(forKey: CoreDataValues.attributeColor.rawValue) as! String
+                print(colorMarker)
+            }
+        }
+        
+        Color.shared.color = PinColor(rawValue: colorMarker)
+        
+        
+        
+                
         let markerLocation = CLLocation(latitude: marker.position.latitude, longitude: marker.position.longitude)
                 
         let geoCoder = CLGeocoder()
@@ -92,7 +109,6 @@ extension ViewController: GMSMapViewDelegate, LocationProtocol, CustomALertProto
                     let address = placemark.name ?? "unknown"
                     let country = placemark.country ?? "unknown"
                     let markerTitle = marker.title ?? "unknown"
-                    _ = marker.icon
                     
                     self.showCustomAlert(markerTitle: markerTitle, country: country, city: city, address: address, location: self.setLocationValuesInCustomAlert(tapMarker: marker), marker: marker)
                 }

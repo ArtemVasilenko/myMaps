@@ -8,6 +8,7 @@ protocol PlacementOnLocation: SetMarkerProtocol {
     func markerChangeTitle(entity: NSManagedObject, name: String)
     func markerDelete(entity: NSManagedObject, marker: GMSMarker)
     func markerChangeColor(entity: NSManagedObject, color: String, marker: GMSMarker)
+    func setColorInPicker(pinColor: PinColor) -> Int
 }
 
 extension PlacementOnLocation {
@@ -33,7 +34,6 @@ extension PlacementOnLocation {
         print("Markers is update!")
         print(AppDelegate.location)
     }
-    
     func markerChangeTitle(entity: NSManagedObject, name: String) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let managedContext = appDelegate.persistentContainer.viewContext
@@ -54,7 +54,6 @@ extension PlacementOnLocation {
         }
         print(entity)
     }
-    
     func markerChangeColor(entity: NSManagedObject, color: String, marker: GMSMarker) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let managedContext = appDelegate.persistentContainer.viewContext
@@ -70,14 +69,12 @@ extension PlacementOnLocation {
             }
             
             try managedContext.save()
-//            marker.icon = GMSMarker.markerImage(with: UIColor(named: color))
             
         } catch let error as NSError {
             print("Could not delete object. \(error), \(error.userInfo)")
         }
         print(entity)
     }
-    
     func markerDelete(entity: NSManagedObject, marker: GMSMarker) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let managedContext = appDelegate.persistentContainer.viewContext
@@ -97,5 +94,17 @@ extension PlacementOnLocation {
         } catch let error as NSError {
             print("Could not delete object. \(error), \(error.userInfo)")
         }
+    }
+    func setColorInPicker(pinColor: PinColor) -> Int {
+        switch pinColor {
+        case .Red: return 0
+        case .Violet: return 1
+        case .Blue: return 2
+        case .Black: return 3
+        case .Yellow: return 4
+        case .Green: return 5
+        case .Gray: return 6
+    }
+        
     }
 }
