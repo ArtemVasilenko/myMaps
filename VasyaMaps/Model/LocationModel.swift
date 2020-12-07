@@ -5,12 +5,12 @@ import CoreData
 
 protocol UpdateMarkerProtocol {
     func updateMarker(marker: GMSMarker) -> GMSMarker
-
 }
 
 protocol LocationProtocol: UIPickerViewDelegate, UIPickerViewDataSource, SetMarkerProtocol {
     func rememberLocation(_ coordinate: CLLocationCoordinate2D, _ colorPickerView: UIPickerView, _ mapView: GMSMapView, _ vc: UIViewController)
-    
+    func setColorIn(tapMarker: GMSMarker)
+
 }
 
 extension LocationProtocol {
@@ -60,4 +60,17 @@ extension LocationProtocol {
         vc.present(alert, animated: true, completion: nil)
         
         }
+    
+    func setColorIn(tapMarker: GMSMarker) {
+    var colorMarker = String()
+    for i in AppDelegate.location {
+        
+        if tapMarker.position.latitude == i.value(forKey: CoreDataValues.attributeLatitude.rawValue) as! CLLocationDegrees && tapMarker.position.longitude == i.value(forKey: CoreDataValues.attributeLongtitude.rawValue) as! CLLocationDegrees {
+            colorMarker = i.value(forKey: CoreDataValues.attributeColor.rawValue) as! String
+            print(colorMarker)
+        }
+    }
+    
+    Color.shared.color = PinColor(rawValue: colorMarker)
+    }
 }
