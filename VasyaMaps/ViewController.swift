@@ -71,7 +71,7 @@ extension ViewController: CLLocationManagerDelegate {
     
 }
 
-extension ViewController: GMSMapViewDelegate, LocationProtocol, CustomALertProtocol {
+extension ViewController: GMSMapViewDelegate, LocationProtocol {
     
     
     func mapView(_ mapView: GMSMapView, didLongPressAt coordinate: CLLocationCoordinate2D) {
@@ -81,25 +81,8 @@ extension ViewController: GMSMapViewDelegate, LocationProtocol, CustomALertProto
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
         
         self.setColorIn(tapMarker: marker)
-                
-        let markerLocation = CLLocation(latitude: marker.position.latitude, longitude: marker.position.longitude)
-                
-        let geoCoder = CLGeocoder()
-        geoCoder.reverseGeocodeLocation(markerLocation) { (placemarks, error) in
-            
-            if let placemarks = placemarks,
-               let placemark = placemarks.first {
-                DispatchQueue.main.async {
-                    
-                    let city = placemark.locality ?? "unknown"
-                    let address = placemark.name ?? "unknown"
-                    let country = placemark.country ?? "unknown"
-                    let markerTitle = marker.title ?? "unknown"
-                    
-                    self.showCustomAlert(markerTitle: markerTitle, country: country, city: city, address: address, location: self.setLocationValuesInCustomAlert(tapMarker: marker), marker: marker)
-                }
-            }
-        }
+        self.setValuesFrom(tapMarker: marker)
+        
         return true
     }
 }

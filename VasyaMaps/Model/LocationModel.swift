@@ -7,9 +7,10 @@ protocol UpdateMarkerProtocol {
     func updateMarker(marker: GMSMarker) -> GMSMarker
 }
 
-protocol LocationProtocol: UIPickerViewDelegate, UIPickerViewDataSource, SetMarkerProtocol {
+protocol LocationProtocol: UIPickerViewDelegate, UIPickerViewDataSource, SetMarkerProtocol, CustomALertProtocol {
     func rememberLocation(_ coordinate: CLLocationCoordinate2D, _ colorPickerView: UIPickerView, _ mapView: GMSMapView, _ vc: UIViewController)
     func setColorIn(tapMarker: GMSMarker)
+    func setValuesFrom(tapMarker: GMSMarker)
 
 }
 
@@ -72,5 +73,26 @@ extension LocationProtocol {
     }
     
     Color.shared.color = PinColor(rawValue: colorMarker)
+    }
+    
+    func setValuesFrom(tapMarker: GMSMarker) {
+        let markerLocation = CLLocation(latitude: tapMarker.position.latitude, longitude: tapMarker.position.longitude)
+                
+        let geoCoder = CLGeocoder()
+        geoCoder.reverseGeocodeLocation(markerLocation) { (placemarks, error) in
+            
+            if let placemarks = placemarks,
+               let placemark = placemarks.first {
+                DispatchQueue.main.async {
+                    
+                    let city = placemark.locality ?? "unknown"
+                    let address = placemark.name ?? "unknown"
+                    let country = placemark.country ?? "unknown"
+                    let markerTitle = tapMarker.title ?? "unknown"
+                    
+                    self.showCustomAlert(markerTitle: markerTitle, country: country, city: city, address: address, location: self.setLocationValuesInCustomAlert(tapMarker: tapMarker), marker: tapMarker)
+                }
+            }
+        }
     }
 }
