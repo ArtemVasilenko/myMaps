@@ -72,17 +72,13 @@ extension ViewController: CLLocationManagerDelegate {
 }
 
 extension ViewController: GMSMapViewDelegate, LocationProtocol {
-    
-    
     func mapView(_ mapView: GMSMapView, didLongPressAt coordinate: CLLocationCoordinate2D) {
         rememberLocation(coordinate, self.pickerView, self.mapView, self)
     }
     
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
-        
         self.setColorIn(tapMarker: marker)
         self.setValuesFrom(tapMarker: marker)
-        
         return true
     }
 }
